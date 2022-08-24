@@ -51,30 +51,39 @@ public:
         this->playerNumber = number;
     }
 
+    int getPlayerNumber() const {
+        return playerNumber;
+    }
+
+    string getPlayerName() const {
+        return playerName;
+    }
+
     void display(){
         cout << left;
-        cout << "Name: " << setw(25) << this->playerName <<  "Number: " << this->playerNumber << endl;
+        cout << "Name: " << setw(25) << this->playerName << "Number: " << this->playerNumber << endl;
         //cout << "Number: " << this->playerNumber << endl;
     }
 
     void addToArray(int& playerCount, Player* array) {
 
-        int addNumPlayers;
-        cout << "How many Players do you want to add?" << endl;
-        cin >> addNumPlayers;
+        //int addNumPlayers;
+        //cout << "How many Players do you want to add?" << endl;
+        //cin >> addNumPlayers;
 
-        Player* tempArray = new Player[playerCount + addNumPlayers];
-        for (int i = 0; i < playerCount; i++) {
-            tempArray[i] = array[i];
-        }
+        //Player* tempArray = new Player[playerCount + addNumPlayers];
+        //for (int i = 0; i < playerCount; i++) {
+        //    tempArray[i] = array[i];
+        //}
 
-        delete[] array;
-        array = tempArray;
-        playerCount += addNumPlayers;
+        //delete[] array;
+        //array = tempArray;
+        //playerCount += addNumPlayers;
 
-        for (int i = 0; i < playerCount; i++) {
-            array[i].display();
-        }
+        //for (int i = 0; i < playerCount; i++) {
+        //    array[i].display();
+        //}
+
     }
 
 };
