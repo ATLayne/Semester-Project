@@ -64,28 +64,6 @@ public:
         cout << "Name: " << setw(25) << this->playerName << "Number: " << this->playerNumber << endl;
         //cout << "Number: " << this->playerNumber << endl;
     }
-
-    void addToArray(int& playerCount, Player* array) {
-
-        //int addNumPlayers;
-        //cout << "How many Players do you want to add?" << endl;
-        //cin >> addNumPlayers;
-
-        //Player* tempArray = new Player[playerCount + addNumPlayers];
-        //for (int i = 0; i < playerCount; i++) {
-        //    tempArray[i] = array[i];
-        //}
-
-        //delete[] array;
-        //array = tempArray;
-        //playerCount += addNumPlayers;
-
-        //for (int i = 0; i < playerCount; i++) {
-        //    array[i].display();
-        //}
-
-    }
-
 };
 
 #endif
