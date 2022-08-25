@@ -66,4 +66,3 @@
 78,Tristan Wirfs
 36,Blidi Wreh-Wilson
 82,Deon Yelder
-10,Austin Layne

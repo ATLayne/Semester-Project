@@ -1,5 +1,6 @@
 #ifndef MAINMENU_CPP
 #define MAINMENU_CPP
+#include <stdlib.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -26,6 +27,7 @@ void mainMenu() {
                 break;
 
             case 2:
+                exit(1);
                 break;
 
             default:
