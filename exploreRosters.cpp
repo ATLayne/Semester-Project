@@ -5,6 +5,8 @@
 
 void mainMenu();
 void rosterMenu(string teamSelect);
+
+
 void exploreRosters(){
     system("cls");
     int selection1=0;

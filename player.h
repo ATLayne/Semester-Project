@@ -11,6 +11,7 @@ class Player{
 private:
     int playerNumber;
     string playerName;
+    string playerPOS;
 
 public:
 
@@ -23,8 +24,8 @@ public:
     }
 
     //Custom Constructor
-    Player(const string name, const int playerNumber){
-        setPlayerInfo(name, playerNumber);
+    Player(const string name, const int playerNumber, const string playerPOS){
+        setPlayerInfo(name, playerNumber, playerPOS);
     }   
 
     //Destructor
@@ -46,9 +47,10 @@ public:
     }
 
     //Setting player info from file. Loop is defined in the main.cpp file
-    void setPlayerInfo(const string name, const int number){
-        this->playerName = name;
-        this->playerNumber = number;
+    void setPlayerInfo(const string name, const int number, const string pos){
+        (*this).playerName = name;
+        (*this).playerNumber = number;
+        (*this).playerPOS = pos;
     }
 
     int getPlayerNumber() const {
@@ -59,9 +61,13 @@ public:
         return playerName;
     }
 
+    string getPlayerPOS() const {
+        return playerPOS;
+    }
+
     void display(){
         cout << left;
-        cout << "Name: " << setw(25) << this->playerName << "Number: " << this->playerNumber << endl;
+        cout << setw(23) << (*this).playerName << setw(11) << this->playerNumber << setw(5) << this->playerPOS << endl;
         //cout << "Number: " << this->playerNumber << endl;
     }
 };
