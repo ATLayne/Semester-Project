@@ -125,11 +125,21 @@ void addToRoster(string teamName) {
         i++;
     }
 
-    cout << "What is the players number?" << endl;
-    cin >> addNumber;
-    cin.ignore();
+
+    do {
+        cout << "What is the players number?" << endl;
+        cin >> addNumber;
+        cin.ignore();
+
+        if (addNumber < 0 or addNumber > 99) {
+            cout << "Invalid entry. Please enter a number between 0 and 99." << endl;
+        }
+
+    } while (addNumber < 0 or addNumber > 99);
+
     cout << "What is the players name?" << endl;
     getline(cin, addName); 
+
     cout << "What is the players Position?" << endl;
     getline(cin, addPOS);
 
@@ -202,10 +212,15 @@ void removeFromRoster(string teamName) {
     printRoster(teamName);
 
     int index;
-    cout << "Which player would you like to remove?" << endl;
-    cout << "Please enter the number to the left of the name." << endl;
-    cin >> index;
-    cin.clear();
+    do {
+        cout << "Which player would you like to remove?" << endl;
+        cout << "Please enter the number to the left of the name." << endl;
+        cin >> index;
+        cin.clear();
+        if (index < 1 or index > i) {
+            cout << "Invalid Entry." << endl;
+        }
+    } while (index < 1 or index > i);
 
     file.close();
     file.open(teamName);
@@ -271,11 +286,13 @@ void removeFromRoster(string teamName) {
     file.close();
     delete[] playerArray;
 
-    int reprintSelect = 0;
-    cout << "Would you like to reprint the roster?" << endl;
-    cout << "1.) Yes" << endl;
-    cout << "2.) No" << endl;
-    cin >> reprintSelect;
+    int reprintSelect;
+    do {
+        cout << "Would you like to reprint the roster?" << endl;
+        cout << "1.) Yes" << endl;
+        cout << "2.) No" << endl;
+        cin >> reprintSelect;
+    } while (reprintSelect < 1 or reprintSelect > 2);
 
     if(reprintSelect == 1)
         printRoster(teamName);

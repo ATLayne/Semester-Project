@@ -1,4 +1,3 @@
-38,Kenjon Barner,RB
 58,Shaquil Barrett,OLB
 6,Le'Veon Bell,RB
 25,Giovani Bernard,RB
@@ -62,7 +61,4 @@
 45,Devin White,LB
 33,Jordan Whitehead,SS
 31,Antoine Winfield Jr.,S
-78,Tristan Wirfs,OL
 36,Blidi Wreh-Wilson,CB
-82,Deon Yelder,TE
-11,Tyler Layne,WR

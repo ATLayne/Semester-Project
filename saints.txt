@@ -78,8 +78,8 @@
 17,Kevin White,WR
 43,Marcus Williams,S
 26,P.J. Williams,CB
-18,Easop Winston,WR
 2,Jameis Winston,QB
 86,Ethan Wolf,TE
 49,Zach Wood,DE
 67,Landon Young,T
+10,Austin Layne,WR
