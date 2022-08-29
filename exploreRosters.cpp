@@ -1,3 +1,7 @@
+//Austin Layne
+//Nathaniel Moreno
+
+
 #ifndef EXPLOREROSTERS_CPP
 #define EXPLOREROSTERS_CPP
 
@@ -6,6 +10,8 @@
 void mainMenu();
 void rosterMenu(string teamSelect);
 
+//A menu function to allow the user to select which team roster they would like to 
+//manipulate.
 
 void exploreRosters(){
     system("cls");
@@ -33,6 +39,10 @@ void exploreRosters(){
 
     rosterMenu(teamSelect);
 }
+
+
+//Menu function to allow a user to select what operation they would like to accomplish on
+//the roster they selected earlier.
 
 void rosterMenu(string teamSelect) {
     int selection2=0;

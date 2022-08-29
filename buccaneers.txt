@@ -62,3 +62,4 @@
 33,Jordan Whitehead,SS
 31,Antoine Winfield Jr.,S
 36,Blidi Wreh-Wilson,CB
+3,Austin Layne,WR

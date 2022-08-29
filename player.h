@@ -1,3 +1,7 @@
+//Austin Layne
+//Nathaniel Moreno
+
+
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <iostream>
@@ -5,7 +9,11 @@
 #include <iomanip>
 using namespace std;
 
-
+//Player class is used to contain objects of players.
+//In the current state the class only has minimal information
+//such as name, number, and position, but can be expanded or
+//overhauled later using other classes as either a base, or 
+//deriving other classes from this one.
 class Player{
 
 private:

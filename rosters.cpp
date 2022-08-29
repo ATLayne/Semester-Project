@@ -1,9 +1,18 @@
+//Austin Layne
+//Nathaniel Moreno
+
+
 #ifndef ROSTERS_CPP
 #define ROSTERS_CPP
 
 #include "player.h"
 
 void rosterMenu(string teamName);
+
+
+//This function takes in the file name selected earlier to open its respective
+//roster file. This function creates a dynamic array with the contents of the file
+//and calls the display function defined in the header file.
 
 void printRoster(string teamName) {
     system("cls");
@@ -78,6 +87,10 @@ void printRoster(string teamName) {
     delete[] playerArray;
     system("pause");
 }
+
+//This function takes in the file name selected earlier to open its respective
+//roster file. This function reads the amount of lines in the selected file
+//and creates a dynamic array with one extra element
 
 void addToRoster(string teamName) {
     system("cls");
@@ -159,6 +172,12 @@ void addToRoster(string teamName) {
     delete[] playerArray;
     rosterMenu(teamName);
 }
+
+//This function takes in the file name selected earlier to open its respective
+//roster file. This function reads the amount of lines in the selected file
+//and creates a dynamic array with one less element. A second array is also
+//created to copy the contents of the first array without the entry that the 
+//user selected to remove.
 
 void removeFromRoster(string teamName) {
     system("cls");

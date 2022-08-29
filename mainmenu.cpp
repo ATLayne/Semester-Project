@@ -1,3 +1,7 @@
+//Austin Layne
+//Nathaniel Moreno
+
+
 #ifndef MAINMENU_CPP
 #define MAINMENU_CPP
 #include <stdlib.h>
@@ -8,6 +12,11 @@
 #include "player.h"
 #include "rosters.cpp"
 #include "exploreRosters.cpp"
+
+
+//Serves as a starting point for users of the program.
+//simple switch statement used to call other functions 
+//included in the program.
 
 void mainMenu() {
     system("cls");
