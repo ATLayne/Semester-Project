@@ -22,7 +22,7 @@ void printRoster(string teamName) {
     int numOfPlayers = 0;
 
     fstream file(teamName);
-    string playerNumber, playerName, playerPOS, tempData;
+    string playerNumber, playerName, playerAge, playerPOS, tempData;
     string line;
 
 
@@ -39,12 +39,13 @@ void printRoster(string teamName) {
     file.open(teamName);
 
     int i = 0;
-    int number;
+    int number, age;
     while (getline(file, line)) {
 
         stringstream ss(line);
         getline(ss, playerNumber, ',');
         getline(ss, playerName, ',');
+        getline(ss, playerAge, ',');
         getline(ss, playerPOS, ',');
         getline(ss, tempData, ',');
 
@@ -55,7 +56,14 @@ void printRoster(string teamName) {
             number = stoi(playerNumber);
         }
 
-        playerArray[i].setPlayerInfo(playerName, number, playerPOS);
+        if (playerAge == "") {
+            age = 0;
+        }
+        else {
+            age = stoi(playerAge);
+        }
+
+        playerArray[i].setPlayerInfo(playerName, number, age, playerPOS);
         i++;
     }
 
@@ -65,7 +73,8 @@ void printRoster(string teamName) {
         if (i%20 == 0) {
             cout << endl;
             cout << setfill(' ') << setw(10) << " " << "Name" 
-                 << setfill(' ') << setw(12) << " " << "Number" 
+                << setfill(' ') << setw(12) << " " << "Number"
+                << setfill(' ') << setw(12) << " " << "Age"
                  << setfill(' ') << setw(4)  << " " << "Position" << endl;
             cout << endl;
         }
@@ -97,12 +106,12 @@ void addToRoster(string teamName) {
 
     //declaring integer counter for number of lines in input file
     int numOfPlayers = 0;
-    int number, addNumber;
+    int number, addNumber, age, addAge;
     string addName;
     string addPOS;
 
     fstream file(teamName);
-    string playerNumber, playerName, playerPOS, tempData;
+    string playerNumber, playerName, playerAge, playerPOS, tempData;
     string line;
 
 
@@ -124,6 +133,7 @@ void addToRoster(string teamName) {
         stringstream ss(line);
         getline(ss, playerNumber, ',');
         getline(ss, playerName, ',');
+        getline(ss, playerAge, ',');
         getline(ss, playerPOS, ',');
         getline(ss, tempData, ',');
 
@@ -134,7 +144,15 @@ void addToRoster(string teamName) {
             number = stoi(playerNumber);
         }
 
-        playerArray[i].setPlayerInfo(playerName, number, playerPOS);
+        if (playerAge == "") {
+            age = 0;
+        }
+        else {
+            age = stoi(playerAge);
+        }
+
+
+        playerArray[i].setPlayerInfo(playerName, number, age, playerPOS);
         i++;
     }
 
@@ -151,19 +169,26 @@ void addToRoster(string teamName) {
     } while (addNumber < 0 or addNumber > 99);
 
     cout << "What is the players name?" << endl;
-    getline(cin, addName); 
+    getline(cin, addName);
+
+    cout << "What is the players age?" << endl;
+    cin >> addAge;
 
     cout << "What is the players Position?" << endl;
+    cin.ignore();
     getline(cin, addPOS);
 
-    playerArray[numOfPlayers].setPlayerInfo(addName, addNumber, addPOS);
+    playerArray[numOfPlayers].setPlayerInfo(addName, addNumber, addAge, addPOS);
 
     file.close();
     file.open(teamName, ios::out | ios::trunc);
 
     if (file.is_open()) {
         for (int i = 0; i < numOfPlayers + 1; i++) {
-            file << to_string(playerArray[i].getPlayerNumber()) + "," + playerArray[i].getPlayerName() + "," + playerArray[i].getPlayerPOS() << endl;
+            file << to_string(playerArray[i].getPlayerNumber()) + "," +
+                    playerArray[i].GetName() + "," +
+                    to_string(playerArray[i].GetAge()) + "," +
+                    playerArray[i].getPlayerPOS() << endl;
         }
     }
 
@@ -186,7 +211,7 @@ void removeFromRoster(string teamName) {
     int numOfPlayers = 0;
 
     fstream file(teamName);
-    string playerNumber, playerName, playerPOS, tempData;
+    string playerNumber, playerName, playerAge, playerPOS, tempData;
     string line;
 
 
@@ -204,12 +229,13 @@ void removeFromRoster(string teamName) {
     file.open(teamName);
 
     int i = 0;
-    int number;
+    int number, age;
     while (getline(file, line)) {
 
         stringstream ss(line);
         getline(ss, playerNumber, ',');
         getline(ss, playerName, ',');
+        getline(ss, playerAge, ',');
         getline(ss, playerPOS, ',');
         getline(ss, tempData, ',');
 
@@ -220,7 +246,15 @@ void removeFromRoster(string teamName) {
             number = stoi(playerNumber);
         }
 
-        playerArray[i].setPlayerInfo(playerName, number, playerPOS);
+        if (playerAge == "") {
+            age = 0;
+        }
+        else {
+            age = stoi(playerAge);
+        }
+
+
+        playerArray[i].setPlayerInfo(playerName, number, age, playerPOS);
         i++;
     }
 
@@ -252,6 +286,7 @@ void removeFromRoster(string teamName) {
         stringstream ss(line);
         getline(ss, playerNumber, ',');
         getline(ss, playerName, ',');
+        getline(ss, playerAge, ',');
         getline(ss, playerPOS, ',');
         getline(ss, tempData, ',');
 
@@ -262,7 +297,14 @@ void removeFromRoster(string teamName) {
             number = stoi(playerNumber);
         }
 
-        tempArray[j].setPlayerInfo(playerName, number, playerPOS);
+        if (playerAge == "") {
+            age = 0;
+        }
+        else {
+            age = stoi(playerAge);
+        }
+
+        tempArray[j].setPlayerInfo(playerName, number, age, playerPOS);
         j++;
     }
 
@@ -271,6 +313,7 @@ void removeFromRoster(string teamName) {
         stringstream ss(line);
         getline(ss, playerNumber, ',');
         getline(ss, playerName, ',');
+        getline(ss, playerAge, ',');
         getline(ss, playerPOS, ',');
         getline(ss, tempData, ',');
 
@@ -280,7 +323,14 @@ void removeFromRoster(string teamName) {
         else {
             number = stoi(playerNumber);
         }
-        tempArray[k].setPlayerInfo(playerName, number, playerPOS);
+
+        if (playerAge == "") {
+            age = 0;
+        }
+        else {
+            age = stoi(playerAge);
+        }
+        tempArray[k].setPlayerInfo(playerName, number, age, playerPOS);
         k++;
     }
 
@@ -297,7 +347,10 @@ void removeFromRoster(string teamName) {
 
     if (file.is_open()) {
         for (int i = 0; i < numOfPlayers-1; i++) {
-            file << to_string(playerArray[i].getPlayerNumber()) + "," + playerArray[i].getPlayerName() + "," + playerArray[i].getPlayerPOS() << endl;
+            file << to_string(playerArray[i].getPlayerNumber()) + "," + 
+                    playerArray[i].GetName() + "," +
+                    to_string(playerArray[i].GetAge()) + "," +
+                    playerArray[i].getPlayerPOS() << endl;
         }
     }
     else { cout << "Error: File Not Open" << endl; }

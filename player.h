@@ -4,6 +4,7 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
+#include "person.h"
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -14,11 +15,10 @@ using namespace std;
 //such as name, number, and position, but can be expanded or
 //overhauled later using other classes as either a base, or 
 //deriving other classes from this one.
-class Player{
+class Player : public Person {
 
 private:
     int playerNumber;
-    string playerName;
     string playerPOS;
 
 public:
@@ -26,58 +26,93 @@ public:
 
 
     //Default Constructor
-    Player() {
-        playerNumber = 0;
-        playerName = "First Last";
-    }
+    Player();
 
     //Custom Constructor
-    Player(const string name, const int playerNumber, const string playerPOS){
-        setPlayerInfo(name, playerNumber, playerPOS);
-    }   
+    Player(const string name, const int playerNumber, const int playerAge, const string playerPOS);
 
     //Destructor
-    ~Player(){
-        //cout << "Destructor Called" << endl;
-    }
+    ~Player();
 
     //Copy Constructor
-    Player(const Player& originalPlayer){
-        playerName = originalPlayer.playerName;
-        playerNumber = originalPlayer.playerNumber;
-    }
+    Player(const Player& originalPlayer);
 
     //Assignment Operator Overload
-    Player& operator=(const Player& rightSide){
-        playerName = rightSide.playerName;
-        playerNumber = rightSide.playerNumber;
-        return *this;
-    }
+    Player& operator=(const Player& rightSide);
 
     //Setting player info from file. Loop is defined in the main.cpp file
-    void setPlayerInfo(const string name, const int number, const string pos){
-        (*this).playerName = name;
-        (*this).playerNumber = number;
-        (*this).playerPOS = pos;
-    }
+    void setPlayerInfo(const string name, const int number, const int age, const string pos);
 
-    int getPlayerNumber() const {
-        return playerNumber;
-    }
+    int getPlayerNumber() const;
 
-    string getPlayerName() const {
-        return playerName;
-    }
+    string getPlayerName() const;
 
-    string getPlayerPOS() const {
-        return playerPOS;
-    }
+    string getPlayerPOS() const;
 
-    void display(){
-        cout << left;
-        cout << setw(23) << (*this).playerName << setw(11) << this->playerNumber << setw(5) << this->playerPOS << endl;
-        //cout << "Number: " << this->playerNumber << endl;
-    }
+    void display();
 };
+
+//Default Constructor
+Player::Player() {
+    playerNumber = 0;
+    personName = "First Last";
+}
+
+//Custom Constructor
+Player::Player(const string name, const int playerNumber, const int playerAge, const string playerPOS) {
+    setPlayerInfo(name, playerNumber, playerAge, playerPOS);
+}
+
+//Destructor
+Player::~Player() {
+    //cout << "Destructor Called" << endl;
+}
+
+//Copy Constructor
+Player::Player(const Player& originalPlayer) {
+    personName = originalPlayer.personName;
+    playerNumber = originalPlayer.playerNumber;
+    playerPOS = originalPlayer.playerPOS;
+}
+
+//Assignment Operator Overload
+Player& Player::operator=(const Player& rightSide) {
+    personName = rightSide.personName;
+    playerNumber = rightSide.playerNumber;
+    playerPOS = rightSide.playerPOS;
+    return *this;
+}
+
+//Setting player info from file. Loop is defined in the main.cpp file
+void Player::setPlayerInfo(const string name, const int number, const int age, const string pos) {
+    (*this).personName = name;
+    (*this).playerNumber = number;
+    (*this).personAge = age;
+    (*this).playerPOS = pos;
+}
+
+int Player::getPlayerNumber() const {
+    return playerNumber;
+}
+
+string Player::getPlayerName() const {
+    return personName;
+}
+
+string Player::getPlayerPOS() const {
+    return playerPOS;
+}
+
+void Player::display() {
+    cout << left;
+    cout << setw(23) << (*this).personName
+        << setw(17) << this->playerNumber
+        << setw(11) << this->personAge
+        << setw(5) << this->playerPOS << endl;
+    //cout << "Number: " << this->playerNumber << endl;
+}
+
+
+
 
 #endif
