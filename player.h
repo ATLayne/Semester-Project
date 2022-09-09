@@ -5,9 +5,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "person.h"
-#include <iostream>
-#include <string>
-#include <iomanip>
 using namespace std;
 
 //Player class is used to contain objects of players.
