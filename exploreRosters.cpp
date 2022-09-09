@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+#include "rosters.cpp"
 
 using namespace std;
 

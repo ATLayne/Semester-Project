@@ -56,4 +56,3 @@
 86,Bug Howard (IR),28,WR
 66,Ryan Jensen (IR),31,T
 64,Aaron Stinnie (IR),28,G
-10,Austin Layne,26,QB

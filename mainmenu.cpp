@@ -6,6 +6,7 @@
 #define MAINMENU_CPP
 #include <stdlib.h>
 #include <iostream>
+#include "exploreRosters.cpp"
 
 using namespace std;
 
