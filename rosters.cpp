@@ -5,7 +5,16 @@
 #ifndef ROSTERS_CPP
 #define ROSTERS_CPP
 
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 #include "player.h"
+
+
+using namespace std;
+
+
 
 void rosterMenu(string teamName);
 

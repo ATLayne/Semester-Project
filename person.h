@@ -46,7 +46,7 @@ int Person::GetAge() {
 }
 void Person::display() {
     cout << left;
-    cout << setw(23) << (*this).personName << endl;
+    cout << setw(23) << (*this).personName << (*this).personAge << endl;
 }
 
 #endif

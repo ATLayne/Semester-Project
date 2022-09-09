@@ -62,4 +62,3 @@
 70,Trevor Penning (IR),23,T
 42,Isaiah Pryor (IR),0,LB
 97,Malcolm Roach (IR),24,DT
-10,Austin Layne,26,QB

@@ -121,6 +121,9 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -139,7 +142,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="exploreRosters.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainmenu.cpp" />
+    <ClCompile Include="rosters.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="person.h" />

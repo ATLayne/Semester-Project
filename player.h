@@ -103,13 +103,13 @@ string Player::getPlayerPOS() const {
     return playerPOS;
 }
 
+//display function overrides the Person.display() function of the base class.
 void Player::display() {
     cout << left;
     cout << setw(23) << (*this).personName
         << setw(17) << this->playerNumber
         << setw(11) << this->personAge
         << setw(5) << this->playerPOS << endl;
-    //cout << "Number: " << this->playerNumber << endl;
 }
 
 

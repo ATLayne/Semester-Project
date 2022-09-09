@@ -5,10 +5,17 @@
 #ifndef EXPLOREROSTERS_CPP
 #define EXPLOREROSTERS_CPP
 
-#include "rosters.cpp"
+#include <iostream>
+#include <string>
+
+using namespace std;
+
 
 void mainMenu();
 void rosterMenu(string teamSelect);
+void printRoster(string teamName);
+void addToRoster(string teamName);
+void removeFromRoster(string teamName);
 
 //A menu function to allow the user to select which team roster they would like to 
 //manipulate.
@@ -45,6 +52,7 @@ void exploreRosters(){
 //the roster they selected earlier.
 
 void rosterMenu(string teamSelect) {
+
     int selection2=0;
     
     cout << "Would you like to Print or Edit" << endl;
@@ -80,4 +88,4 @@ void rosterMenu(string teamSelect) {
     rosterMenu(teamSelect);
 }
 
-#endif // !EXPLOREROSTERS_CPP
+#endif // !EXPLOREROSTERS_H

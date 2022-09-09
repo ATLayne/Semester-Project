@@ -6,17 +6,14 @@
 #define MAINMENU_CPP
 #include <stdlib.h>
 #include <iostream>
-#include <fstream>
-#include <string>
-#include <sstream>
-#include "player.h"
-#include "rosters.cpp"
-#include "exploreRosters.cpp"
+
+using namespace std;
 
 
 //Serves as a starting point for users of the program.
 //simple switch statement used to call other functions 
 //included in the program.
+void exploreRosters();
 
 void mainMenu() {
     system("cls");
