@@ -1,3 +1,11 @@
+//Austin Layne
+//Nathaniel Moreno
+
+//This file defines the person class. This class contains only
+//basic information that would be relevent to any individual
+//such as name and age. From this class, other classes containing
+//objects of different types of people can be derived.
+
 #ifndef PERSON_H
 #define PERSON_H
 #include <string>

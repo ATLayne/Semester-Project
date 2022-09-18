@@ -2,18 +2,18 @@
 //Nathaniel Moreno
 
 
-#ifndef EXPLOREROSTERS_CPP
-#define EXPLOREROSTERS_CPP
+#ifndef ROSTERMENUS_CPP
+#define ROSTERMENUS_CPP
 
 #include <iostream>
 #include <string>
-#include "rosters.cpp"
+//#include "rosters.cpp"
 
 using namespace std;
 
 
 void mainMenu();
-void rosterMenu(string teamSelect);
+void rosterOptions(string teamSelect);
 void printRoster(string teamName);
 void addToRoster(string teamName);
 void removeFromRoster(string teamName);
@@ -45,14 +45,14 @@ void exploreRosters(){
     if (selection1 == 3)
         mainMenu();
 
-    rosterMenu(teamSelect);
+    rosterOptions(teamSelect);
 }
 
 
 //Menu function to allow a user to select what operation they would like to accomplish on
 //the roster they selected earlier.
 
-void rosterMenu(string teamSelect) {
+void rosterOptions(string teamSelect) {
 
     int selection2=0;
     
@@ -86,7 +86,7 @@ void rosterMenu(string teamSelect) {
     default:
         cout << "Invalid Choice" << endl;
     }
-    rosterMenu(teamSelect);
+    rosterOptions(teamSelect);
 }
 
-#endif // !EXPLOREROSTERS_H
+#endif // !ROSTERMENUS_H

@@ -16,7 +16,8 @@ using namespace std;
 
 
 
-void rosterMenu(string teamName);
+void rosterOptions(string teamName);
+void mainMenu();
 
 
 //This function takes in the file name selected earlier to open its respective
@@ -165,7 +166,7 @@ void addToRoster(string teamName) {
         i++;
     }
 
-
+    char continueSelect;
     do {
         cout << "What is the players number?" << endl;
         cin >> addNumber;
@@ -173,6 +174,11 @@ void addToRoster(string teamName) {
 
         if (addNumber < 0 or addNumber > 99) {
             cout << "Invalid entry. Please enter a number between 0 and 99." << endl;
+            cout << "Continue?" << endl;
+            cin >> continueSelect;
+            if (continueSelect == 'N' or continueSelect == 'n')
+                delete[] playerArray;
+                mainMenu();
         }
 
     } while (addNumber < 0 or addNumber > 99);
@@ -204,7 +210,7 @@ void addToRoster(string teamName) {
 
     file.close();
     delete[] playerArray;
-    rosterMenu(teamName);
+    rosterOptions(teamName);
 }
 
 //This function takes in the file name selected earlier to open its respective
@@ -366,6 +372,7 @@ void removeFromRoster(string teamName) {
 
     file.close();
     delete[] playerArray;
+    delete[] tempArray;
 
     int reprintSelect;
     do {
@@ -378,7 +385,7 @@ void removeFromRoster(string teamName) {
     if(reprintSelect == 1)
         printRoster(teamName);
 
-    rosterMenu(teamName);
+    rosterOptions(teamName);
 
 }
 

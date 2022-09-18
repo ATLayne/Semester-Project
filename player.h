@@ -8,10 +8,8 @@
 using namespace std;
 
 //Player class is used to contain objects of players.
-//In the current state the class only has minimal information
-//such as name, number, and position, but can be expanded or
-//overhauled later using other classes as either a base, or 
-//deriving other classes from this one.
+//It is now derived from the person class and only implements 
+//members for a players number and a players position.
 class Player : public Person {
 
 private:
