@@ -6,7 +6,7 @@
 #define MAINMENU_CPP
 #include <stdlib.h>
 #include <iostream>
-//#include "rostermenus.cpp"
+#include "rostermenus.cpp"
 
 using namespace std;
 
