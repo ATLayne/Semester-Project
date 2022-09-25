@@ -9,7 +9,7 @@
 #include <sstream>
 using namespace std;
 
-#include "struct.h"
+#include "teamrecord.h"
 
 
 //This function takes in the file name selected earlier to open its respective
@@ -54,7 +54,6 @@ void printTeamRecords() {
         lossInput = stoi(teamLoss);
         tieInput = stoi(teamTie);
 
-        //recordArray[i] = {teamName, winInput, lossInput, tieInput};
         recordArray[i].teamName = teamName;
         recordArray[i].win = winInput;
         recordArray[i].loss = lossInput;
@@ -63,32 +62,31 @@ void printTeamRecords() {
         i++;
     }
 
-    // int outputCounter = 0;
-    // int outputControl = 19;
+    int outputCounter = 0;
+    int outputControl = 19;
     for (int i = 0; i < numOfTeams; i++) {
-        cout << recordArray[i].teamName << " " 
-             << recordArray[i].win << " "
-             << recordArray[i].loss << " "
-             << recordArray[i].tie << endl;
-        // if (i%20 == 0) {
-        //     cout << endl;
-        //     cout << setfill(' ') << setw(10) << " " << "Name" 
-        //         << setfill(' ') << setw(12) << " " << "Number"
-        //         << setfill(' ') << setw(12) << " " << "Age"
-        //          << setfill(' ') << setw(4)  << " " << "Position" << endl;
-        //     cout << endl;
-        // }
+        if (i%20 == 0) {
+            cout << endl;
+            cout << setfill(' ') << setw(10) << " " << "Team" 
+                << setfill(' ') << setw(20) << " " << "Wins"
+                << setfill(' ') << setw(7) << " " << "Losses"
+                 << setfill(' ') << setw(5)  << " " << "Ties" << endl;
+            cout << endl;
+        }
 
-        // int counter = i + 1;
-        // cout << right;
-        // cout << setw(2) << counter  << ".) ";
-        // playerArray[i].display();
+        int counter = i + 1;
+        cout << left;
+        cout << setw(2) << counter  << ".) ";
+        cout << setw(30) << recordArray[i].teamName << " "
+             << setw(10) << recordArray[i].win << " "
+             << setw(10) << recordArray[i].loss << " "
+             << setw(10) << recordArray[i].tie << " " << endl;
 
-        // if (outputCounter == outputControl) { 
-        //     system("pause");
-        //     outputControl += 20;
-        // }
-        // outputCounter++;
+        if (outputCounter == outputControl) { 
+            system("pause");
+            outputControl += 20;
+        }
+        outputCounter++;
     }
 
 

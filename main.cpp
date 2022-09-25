@@ -6,14 +6,11 @@
 //Beginning of program execution. Only exists to call the
 //mainMenu() function of the program.
 #include "mainmenu.cpp"
-#include "teamMenu.cpp"
 
-//void mainMenu();
-void printTeamRecords();
+void mainMenu();
 
 int main(){
-    printTeamRecords();
-    //mainMenu();
+    mainMenu();
     return 0;
 }
 
