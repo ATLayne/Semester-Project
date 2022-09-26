@@ -10,20 +10,14 @@
 #include <fstream>
 #include <sstream>
 #include "player.h"
-
-
 using namespace std;
-
-
 
 void rosterOptions(string teamName);
 void mainMenu();
 
-
 //This function takes in the file name selected earlier to open its respective
 //roster file. This function creates a dynamic array with the contents of the file
 //and calls the display function defined in the header file.
-
 void printRoster(string teamName) {
     system("cls");
     cout << teamName << "\n" << endl;
@@ -35,10 +29,8 @@ void printRoster(string teamName) {
     string playerNumber, playerName, playerAge, playerPOS, tempData;
     string line;
 
-
     // count the number of players
-    while (getline(file, line))
-    {
+    while (getline(file, line)){
         numOfPlayers += 1;
     }
 
@@ -101,7 +93,6 @@ void printRoster(string teamName) {
         outputCounter++;
     }
 
-
     file.close();
     delete[] playerArray;
     system("pause");
@@ -123,7 +114,6 @@ void addToRoster(string teamName) {
     fstream file(teamName);
     string playerNumber, playerName, playerAge, playerPOS, tempData;
     string line;
-
 
     // count the number of players
     while (getline(file, line))
@@ -207,7 +197,6 @@ void addToRoster(string teamName) {
         }
     }
 
-
     file.close();
     delete[] playerArray;
     rosterOptions(teamName);
@@ -229,10 +218,8 @@ void removeFromRoster(string teamName) {
     string playerNumber, playerName, playerAge, playerPOS, tempData;
     string line;
 
-
     // count the number of players
-    while (getline(file, line))
-    {
+    while (getline(file, line)){
         numOfPlayers += 1;
     }
 
@@ -273,10 +260,8 @@ void removeFromRoster(string teamName) {
         i++;
     }
 
-
     file.close();
     file.open(teamName);
-
     printRoster(teamName);
 
     int index;
@@ -349,14 +334,9 @@ void removeFromRoster(string teamName) {
         k++;
     }
 
-
-    
-
-
     file.close();
     delete[] playerArray;
     playerArray = tempArray;
-
 
     file.open(teamName, ios::out | ios::trunc);
 
@@ -372,7 +352,6 @@ void removeFromRoster(string teamName) {
 
     file.close();
     delete[] playerArray;
-    delete[] tempArray;
 
     int reprintSelect;
     do {
@@ -386,7 +365,6 @@ void removeFromRoster(string teamName) {
         printRoster(teamName);
 
     rosterOptions(teamName);
-
 }
 
 #endif // !ROSTERS_CPP

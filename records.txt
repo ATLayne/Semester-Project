@@ -10,7 +10,7 @@ Jacksonville Jaguars,1,1,0
 Indianapolis Colts,0,1,1
 Houston Texans,0,1,1
 Tennessee Titans,0,2,0
-Kansas City Chiefs,2,0,0
+Kansas City Chiefs,2,1,0
 Denver Broncos,1,1,0
 Los Angeles Chargers,1,1,0
 Las Vegas Raiders,0,2,0
@@ -22,11 +22,11 @@ Minnesota Vikings,1,1,0
 Green Bay Packers,1,1,0
 Detroit Lions,1,1,0
 Chicago Bears,1,1,0
-Tampa Bay Buccaneers,2,0,0
+Tampa Bay Buccaneers,2,1,0
 New Orleans Saints,1,1,0
 Carolina Panthers,0,2,0
 Atlanta Falcons,0,2,0
 Arizona Cardinals,1,1,0
 Los Angeles Rams,1,1,0
 Seattle Seahawks,1,1,0
-San Francisco 49ers,3,1,0
+San Francisco 49ers,1,2,0

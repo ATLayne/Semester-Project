@@ -7,10 +7,8 @@
 
 #include <iostream>
 #include <string>
-#include "rosters.cpp"
-
+//#include "rosters.cpp"
 using namespace std;
-
 
 void mainMenu();
 void rosterOptions(string teamSelect);
@@ -20,7 +18,6 @@ void removeFromRoster(string teamName);
 
 //A menu function to allow the user to select which team roster they would like to 
 //manipulate.
-
 void exploreRosters(){
     system("cls");
     int selection1=0;

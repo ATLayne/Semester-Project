@@ -6,11 +6,9 @@
 #define MAINMENU_CPP
 #include <stdlib.h>
 #include <iostream>
-#include "rostermenus.cpp"
-#include "teamMenu.cpp"
-
+//#include "rostermenus.cpp"
+//#include "teamMenu.cpp"
 using namespace std;
-
 
 //Serves as a starting point for users of the program.
 //simple switch statement used to call other functions 
@@ -51,6 +49,4 @@ void mainMenu() {
                 break;
         }
 }
-
-
 #endif

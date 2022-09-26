@@ -7,15 +7,12 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <iomanip>
+#include "teamrecord.h"
 using namespace std;
 
-#include "teamrecord.h"
-
-
-//This function takes in the file name selected earlier to open its respective
-//roster file. This function creates a dynamic array with the contents of the file
-//and calls the display function defined in the header file.
 void editTeamRecord(TeamRecord array[]);
+void mainMenu();
 void printTeamRecords() {
     system("cls");
 
@@ -27,18 +24,19 @@ void printTeamRecords() {
     string line;
 
 
-    // count the number of players
-    while (getline(file, line))
-    {
+    // count the number of teams
+    while (getline(file, line)){
         numOfTeams += 1;
     }
 
-    //Creating the dynamic array of Player objects
+    //Creating the dynamic array of TeamRecord structs
     TeamRecord* recordArray = new TeamRecord[numOfTeams];
 
     file.close();
     file.open("records.txt");
 
+    //Parsing through the file line by line to set the data
+    //members of the struct.
     int i = 0;
     int winInput, lossInput, tieInput;
     while (getline(file, line)) {
@@ -62,10 +60,13 @@ void printTeamRecords() {
         i++;
     }
 
+    //This code handles the display output of the array contents
+    //It is set to display 16 of the teams before waiting for 
+    //the user to contiue.
     int outputCounter = 0;
-    int outputControl = 19;
+    int outputControl = 15;
     for (int i = 0; i < numOfTeams; i++) {
-        if (i%20 == 0) {
+        if (i%16 == 0) {
             cout << endl;
             cout << setfill(' ') << setw(10) << " " << "Team" 
                 << setfill(' ') << setw(20) << " " << "Wins"
@@ -84,25 +85,28 @@ void printTeamRecords() {
 
         if (outputCounter == outputControl) { 
             system("pause");
-            outputControl += 20;
+            outputControl += 16;
         }
         outputCounter++;
     }
-
-
     file.close();
 
+    //Selecting whether or not to edit a teams record.
     char recordEditSelection;
     cout << "Would you like to edit a record? Y/N" << endl;
     cin >> recordEditSelection;
 
-    if(recordEditSelection == 'Y' or recordEditSelection == 'y')
+    if (recordEditSelection == 'Y' or recordEditSelection == 'y')
         editTeamRecord(recordArray);
+    else
+        delete[] recordArray;
+        mainMenu();
 
-    delete[] recordArray;
     system("pause");
 }
 
+//Function is passed the dynamic array created above. This function
+//is then used to manipulate the elements of that array.
 void editTeamRecord(TeamRecord array[]){
     int teamSelect;
     int statSelect;
@@ -115,51 +119,33 @@ void editTeamRecord(TeamRecord array[]){
          << "2.) Losses" << endl
          << "3.) Ties" << endl;
     cin >> statSelect;
-
+    
+    int statEdit = 0;
     switch(statSelect){
         case 1:
-
-        case 2:
-
-        case 3:
-
-        default:
-        
-    }
-
-    while(statSelect != 'Q' or statSelect != 'q'){
-        int statEdit = 0;
-        if(statSelect == 'W' or statSelect == 'w'){
             cout << "How many wins do the " + array[teamSelect].teamName + " have?" << endl;
             cin >> statEdit;
             array[teamSelect].win = statEdit;
             cout << endl;
-            cout << "Do you want to edit losses or ties?" << endl;
-            cout << "Enter Q to continue" << endl;
-            cin >> statSelect;
-        }
-        if (statSelect == 'L' or statSelect == 'l'){
+            break;
+
+        case 2:
             cout << "How many losses do the " + array[teamSelect].teamName + " have?" << endl;
             cin >> statEdit;
             array[teamSelect].loss = statEdit;
             cout << endl;
-            cout << "Do you want to edit wins or ties?" << endl;
-            cout << "Enter Q to continue" << endl;
-            cin >> statSelect;
-        }
-        if (statSelect == 'T' or statSelect == 't'){
+            break;
+
+        case 3:
             cout << "How many ties do the " + array[teamSelect].teamName + " have?" << endl;
             cin >> statEdit;
             array[teamSelect].tie = statEdit;
             cout << endl;
-            cout << "Do you want to edit wins or losses?" << endl;
-            cout << "Enter Q to continue" << endl;
-            cin >> statSelect;
+            break;
 
-        } else {
-            cout << "Invalid Choice: Choose the correct option or press Q to quit." << endl;
-            cin >> statSelect;
-        }
+        default:
+            cout << "Invalid Choice" << endl;
+            editTeamRecord(array);
     }
 
     fstream file("records.txt");
@@ -183,5 +169,4 @@ void editTeamRecord(TeamRecord array[]){
     file.close();
 
     printTeamRecords();
-
 }

@@ -146,13 +146,16 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainmenu.cpp" />
     <ClCompile Include="rosters.cpp" />
+    <ClCompile Include="teamMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="person.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="teamrecord.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="buccaneers.txt" />
+    <Text Include="records.txt" />
     <Text Include="saints.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
