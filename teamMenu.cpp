@@ -15,7 +15,7 @@ using namespace std;
 //This function takes in the file name selected earlier to open its respective
 //roster file. This function creates a dynamic array with the contents of the file
 //and calls the display function defined in the header file.
-
+void editTeamRecord(TeamRecord array[]);
 void printTeamRecords() {
     system("cls");
 
@@ -91,6 +91,97 @@ void printTeamRecords() {
 
 
     file.close();
+
+    char recordEditSelection;
+    cout << "Would you like to edit a record? Y/N" << endl;
+    cin >> recordEditSelection;
+
+    if(recordEditSelection == 'Y' or recordEditSelection == 'y')
+        editTeamRecord(recordArray);
+
     delete[] recordArray;
     system("pause");
+}
+
+void editTeamRecord(TeamRecord array[]){
+    int teamSelect;
+    int statSelect;
+    cout << "Type the number of the team to select it." << endl;
+    cin >> teamSelect;
+    teamSelect--;
+
+    cout << "Do you want to edit wins, losses, or ties?" << endl;
+    cout << "1.) Wins" << endl
+         << "2.) Losses" << endl
+         << "3.) Ties" << endl;
+    cin >> statSelect;
+
+    switch(statSelect){
+        case 1:
+
+        case 2:
+
+        case 3:
+
+        default:
+        
+    }
+
+    while(statSelect != 'Q' or statSelect != 'q'){
+        int statEdit = 0;
+        if(statSelect == 'W' or statSelect == 'w'){
+            cout << "How many wins do the " + array[teamSelect].teamName + " have?" << endl;
+            cin >> statEdit;
+            array[teamSelect].win = statEdit;
+            cout << endl;
+            cout << "Do you want to edit losses or ties?" << endl;
+            cout << "Enter Q to continue" << endl;
+            cin >> statSelect;
+        }
+        if (statSelect == 'L' or statSelect == 'l'){
+            cout << "How many losses do the " + array[teamSelect].teamName + " have?" << endl;
+            cin >> statEdit;
+            array[teamSelect].loss = statEdit;
+            cout << endl;
+            cout << "Do you want to edit wins or ties?" << endl;
+            cout << "Enter Q to continue" << endl;
+            cin >> statSelect;
+        }
+        if (statSelect == 'T' or statSelect == 't'){
+            cout << "How many ties do the " + array[teamSelect].teamName + " have?" << endl;
+            cin >> statEdit;
+            array[teamSelect].tie = statEdit;
+            cout << endl;
+            cout << "Do you want to edit wins or losses?" << endl;
+            cout << "Enter Q to continue" << endl;
+            cin >> statSelect;
+
+        } else {
+            cout << "Invalid Choice: Choose the correct option or press Q to quit." << endl;
+            cin >> statSelect;
+        }
+    }
+
+    fstream file("records.txt");
+    int count = 0;
+    string line;
+    while (getline(file, line)){
+        count += 1;
+    }
+
+    file.close();
+    file.open("records.txt", ios::out | ios::trunc);
+        if (file.is_open()) {
+        for (int i = 0; i < count; i++) {
+            file << array[i].teamName + "," + 
+                    to_string(array[i].win) + "," +
+                    to_string(array[i].loss) + "," +
+                    to_string(array[i].tie) << endl;
+        }
+    }
+    else { cout << "Error: File Not Open" << endl; }
+    file.close();
+
+    printTeamRecords();
+
 }
