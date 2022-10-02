@@ -6,8 +6,8 @@
 #define MAINMENU_CPP
 #include <stdlib.h>
 #include <iostream>
-//#include "rostermenus.cpp"
-//#include "teamMenu.cpp"
+#include "rostermenus.cpp"
+#include "teamMenu.cpp"
 using namespace std;
 
 //Serves as a starting point for users of the program.
@@ -24,9 +24,10 @@ void mainMenu() {
         cout << "*****MAIN MENU*****\n\n";
         cout << "What do you want to do?" << endl;
         cout << "1.) Explore Rosters" << endl;
-        cout << "2.) Print League W/L Records" << endl;
+        cout << "2.) Open Team Record Menu" << endl;
         cout << "3.) ---Quit Program---" << endl;
         cin >> selection;
+        cin.ignore();
 
         switch (selection) {
 
@@ -35,7 +36,7 @@ void mainMenu() {
                 break;
 
             case 2:
-                printTeamRecords();
+                createRecordArray();
                 break;
 
             case 3:

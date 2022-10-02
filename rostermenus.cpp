@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <string>
-//#include "rosters.cpp"
+#include "rosters.cpp"
 using namespace std;
 
 void mainMenu();

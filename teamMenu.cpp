@@ -9,12 +9,45 @@
 #include <sstream>
 #include <iomanip>
 #include "teamrecord.h"
+#include "searchandsort.cpp"
 using namespace std;
 
-void editTeamRecord(TeamRecord array[]);
+void createRecordArray();
+void teamRecordMenu(TeamRecord array[], int teamCount);
+void editTeamRecord(TeamRecord array[], int teamCount);
+void printTeamRecords(TeamRecord array[], int teamCount);
 void mainMenu();
-void printTeamRecords() {
+
+void teamRecordMenu(TeamRecord array[], int teamCount){
+    int selection;
+    cout << "In teamRecordMenu Function" << endl;
+    cout << "What would you like to do?" << endl;
+    cout << "1.) Print records" << endl;
+    cout << "2.) Return to Main Menu." << endl;
+    cin >> selection;
+    cin.ignore();
+    
+    switch (selection){
+        case 1:
+            printTeamRecords(array, teamCount);
+            break;
+
+        case 2:
+            mainMenu();
+            break;
+        
+        default:
+            cout << "Invalid Choice. Please select again." << endl;
+            teamRecordMenu(array, teamCount);
+            break;
+    }
+
+}
+
+
+void createRecordArray(){
     system("cls");
+    cout << "Creating record array." << endl;
 
     //declaring integer counter for number of lines in input file
     int numOfTeams = 0;
@@ -59,10 +92,16 @@ void printTeamRecords() {
 
         i++;
     }
+    file.close();
 
+    teamRecordMenu(recordArray, numOfTeams);
+}
+
+void printTeamRecords(TeamRecord array[], int teamCount) {
     //This code handles the display output of the array contents
     //It is set to display 16 of the teams before waiting for 
     //the user to contiue.
+    int numOfTeams = teamCount;
     int outputCounter = 0;
     int outputControl = 15;
     for (int i = 0; i < numOfTeams; i++) {
@@ -78,10 +117,10 @@ void printTeamRecords() {
         int counter = i + 1;
         cout << left;
         cout << setw(2) << counter  << ".) ";
-        cout << setw(30) << recordArray[i].teamName << " "
-             << setw(10) << recordArray[i].win << " "
-             << setw(10) << recordArray[i].loss << " "
-             << setw(10) << recordArray[i].tie << " " << endl;
+        cout << setw(30) << array[i].teamName << " "
+             << setw(10) << array[i].win << " "
+             << setw(10) << array[i].loss << " "
+             << setw(10) << array[i].tie << " " << endl;
 
         if (outputCounter == outputControl) { 
             system("pause");
@@ -89,7 +128,6 @@ void printTeamRecords() {
         }
         outputCounter++;
     }
-    file.close();
 
     //Selecting whether or not to edit a teams record.
     char recordEditSelection;
@@ -97,17 +135,16 @@ void printTeamRecords() {
     cin >> recordEditSelection;
 
     if (recordEditSelection == 'Y' or recordEditSelection == 'y')
-        editTeamRecord(recordArray);
+        editTeamRecord(array, teamCount);
     else
-        delete[] recordArray;
-        mainMenu();
+        teamRecordMenu(array, teamCount);
 
     system("pause");
 }
 
 //Function is passed the dynamic array created above. This function
 //is then used to manipulate the elements of that array.
-void editTeamRecord(TeamRecord array[]){
+void editTeamRecord(TeamRecord array[], int teamCount){
     int teamSelect;
     int statSelect;
     cout << "Type the number of the team to select it." << endl;
@@ -145,7 +182,7 @@ void editTeamRecord(TeamRecord array[]){
 
         default:
             cout << "Invalid Choice" << endl;
-            editTeamRecord(array);
+            editTeamRecord(array, teamCount);
     }
 
     fstream file("records.txt");
@@ -168,5 +205,5 @@ void editTeamRecord(TeamRecord array[]){
     else { cout << "Error: File Not Open" << endl; }
     file.close();
 
-    printTeamRecords();
+    printTeamRecords(array, teamCount);
 }
