@@ -1,3 +1,7 @@
+#ifndef TEAMRECORDMENU_CPP
+#define TEAMRECORDMENU_CPP
+
+
 // Program file to read in a text file of team records.
 // Should create an array of TeamRecord structs to display
 // to user. User can update the record on their own if 
@@ -9,48 +13,63 @@
 #include <sstream>
 #include <iomanip>
 #include "teamrecord.h"
-//#include "searchandsort.cpp"
 using namespace std;
 
-void createRecordArray();
-void teamRecordMenu(TeamRecord array[], int teamCount);
-void editTeamRecord(TeamRecord array[], int teamCount);
-void printTeamRecords(TeamRecord array[], int teamCount);
+void teamRecordMenu();
+TeamRecord* createRecordArray(int& size);
+TeamRecord* printTeamRecords(TeamRecord* recordArray, int& size);
+TeamRecord* editTeamRecord(TeamRecord* recordArray, int& size);
+TeamRecord* searchRecords(TeamRecord* recordArray, int& size);
+TeamRecord* sortRecords(TeamRecord* recordArray, int& size);
 void mainMenu();
 
-void teamRecordMenu(TeamRecord array[], int teamCount){
+void teamRecordMenu(){
+    int size;
+    TeamRecord* recordArray = createRecordArray(size);
+
     int selection;
     cout << "In teamRecordMenu Function" << endl;
     cout << "What would you like to do?" << endl;
     cout << "1.) Print records" << endl;
-    cout << "2.) Return to Main Menu." << endl;
+    cout << "2.) Search Records" << endl;
+    cout << "3.) Sort Records" << endl;
+    cout << "4.) Return to Main Menu." << endl;
     cin >> selection;
     cin.ignore();
     
     switch (selection){
         case 1:
-            printTeamRecords(array, teamCount);
+            recordArray = printTeamRecords(recordArray, size);
             break;
 
         case 2:
+            recordArray = searchRecords(recordArray, size);
+            break;
+
+        case 3:
+            recordArray = sortRecords(recordArray, size);
+            break;
+
+        case 4:
+            delete[] recordArray;
             mainMenu();
             break;
         
         default:
             cout << "Invalid Choice. Please select again." << endl;
-            teamRecordMenu(array, teamCount);
+            teamRecordMenu();
             break;
     }
 
 }
 
 
-void createRecordArray(){
+TeamRecord* createRecordArray(int& size) {
     system("cls");
     cout << "Creating record array." << endl;
 
     //declaring integer counter for number of lines in input file
-    int numOfTeams = 0;
+    size = 0;
 
     fstream file("records.txt");
     string teamName, teamWin, teamLoss, teamTie, tempData;
@@ -59,11 +78,11 @@ void createRecordArray(){
 
     // count the number of teams
     while (getline(file, line)){
-        numOfTeams += 1;
+        size += 1;
     }
 
     //Creating the dynamic array of TeamRecord structs
-    TeamRecord* recordArray = new TeamRecord[numOfTeams];
+    TeamRecord* recordArray = new TeamRecord[size];
 
     file.close();
     file.open("records.txt");
@@ -89,38 +108,44 @@ void createRecordArray(){
         recordArray[i].win = winInput;
         recordArray[i].loss = lossInput;
         recordArray[i].tie = tieInput;
+        recordArray[i].percentage = (recordArray[i].win / 
+                                    (recordArray[i].win + 
+                                     recordArray[i].loss + 
+                                     recordArray[i].tie))*100;
 
         i++;
     }
     file.close();
 
-    teamRecordMenu(recordArray, numOfTeams);
+    return recordArray;
 }
 
-void printTeamRecords(TeamRecord array[], int teamCount) {
+TeamRecord* printTeamRecords(TeamRecord* recordArray, int& size) {
     //This code handles the display output of the array contents
     //It is set to display 16 of the teams before waiting for 
     //the user to contiue.
-    int numOfTeams = teamCount;
     int outputCounter = 0;
     int outputControl = 15;
-    for (int i = 0; i < numOfTeams; i++) {
+    for (int i = 0; i < size; i++) {
         if (i%16 == 0) {
             cout << endl;
             cout << setfill(' ') << setw(10) << " " << "Team" 
                 << setfill(' ') << setw(20) << " " << "Wins"
                 << setfill(' ') << setw(7) << " " << "Losses"
-                 << setfill(' ') << setw(5)  << " " << "Ties" << endl;
+                << setfill(' ') << setw(5) << " " << "Ties"
+                << setfill(' ') << setw(5)  << " " << "Percentage" << endl;
             cout << endl;
         }
 
         int counter = i + 1;
         cout << left;
         cout << setw(2) << counter  << ".) ";
-        cout << setw(30) << array[i].teamName << " "
-             << setw(10) << array[i].win << " "
-             << setw(10) << array[i].loss << " "
-             << setw(10) << array[i].tie << " " << endl;
+        cout << setw(30) << recordArray[i].teamName << " "
+            << setw(10) << recordArray[i].win << " "
+            << setw(10) << recordArray[i].loss << " "
+            << setw(10) << recordArray[i].tie << " "
+            << setw(5) << fixed << setprecision(0) << right
+                        << recordArray[i].percentage << endl;
 
         if (outputCounter == outputControl) { 
             system("pause");
@@ -135,16 +160,17 @@ void printTeamRecords(TeamRecord array[], int teamCount) {
     cin >> recordEditSelection;
 
     if (recordEditSelection == 'Y' or recordEditSelection == 'y')
-        editTeamRecord(array, teamCount);
+        editTeamRecord(recordArray, size);
     else
-        teamRecordMenu(array, teamCount);
+        teamRecordMenu();
 
     system("pause");
+    return recordArray;
 }
 
 //Function is passed the dynamic array created above. This function
 //is then used to manipulate the elements of that array.
-void editTeamRecord(TeamRecord array[], int teamCount){
+TeamRecord* editTeamRecord(TeamRecord* recordArray, int& size){
     int teamSelect;
     int statSelect;
     cout << "Type the number of the team to select it." << endl;
@@ -160,29 +186,29 @@ void editTeamRecord(TeamRecord array[], int teamCount){
     int statEdit = 0;
     switch(statSelect){
         case 1:
-            cout << "How many wins do the " + array[teamSelect].teamName + " have?" << endl;
+            cout << "How many wins do the " + recordArray[teamSelect].teamName + " have?" << endl;
             cin >> statEdit;
-            array[teamSelect].win = statEdit;
+            recordArray[teamSelect].win = statEdit;
             cout << endl;
             break;
 
         case 2:
-            cout << "How many losses do the " + array[teamSelect].teamName + " have?" << endl;
+            cout << "How many losses do the " + recordArray[teamSelect].teamName + " have?" << endl;
             cin >> statEdit;
-            array[teamSelect].loss = statEdit;
+            recordArray[teamSelect].loss = statEdit;
             cout << endl;
             break;
 
         case 3:
-            cout << "How many ties do the " + array[teamSelect].teamName + " have?" << endl;
+            cout << "How many ties do the " + recordArray[teamSelect].teamName + " have?" << endl;
             cin >> statEdit;
-            array[teamSelect].tie = statEdit;
+            recordArray[teamSelect].tie = statEdit;
             cout << endl;
             break;
 
         default:
             cout << "Invalid Choice" << endl;
-            editTeamRecord(array, teamCount);
+            editTeamRecord(recordArray, size);
     }
 
     fstream file("records.txt");
@@ -196,14 +222,27 @@ void editTeamRecord(TeamRecord array[], int teamCount){
     file.open("records.txt", ios::out | ios::trunc);
         if (file.is_open()) {
         for (int i = 0; i < count; i++) {
-            file << array[i].teamName + "," + 
-                    to_string(array[i].win) + "," +
-                    to_string(array[i].loss) + "," +
-                    to_string(array[i].tie) << endl;
+            file << recordArray[i].teamName + "," +
+                    to_string(recordArray[i].win) + "," +
+                    to_string(recordArray[i].loss) + "," +
+                    to_string(recordArray[i].tie) + "," +
+                    to_string(recordArray[i].percentage) << endl;
         }
     }
     else { cout << "Error: File Not Open" << endl; }
     file.close();
 
-    printTeamRecords(array, teamCount);
+    return recordArray;
 }
+
+TeamRecord* searchRecords(TeamRecord* recordArray, int& size) {
+    return recordArray;
+}
+
+TeamRecord* sortRecords(TeamRecord* recordArray, int& size) {
+
+    return recordArray;
+}
+
+
+#endif

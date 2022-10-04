@@ -14,7 +14,7 @@ using namespace std;
 //simple switch statement used to call other functions 
 //included in the program.
 void rosterSelection();
-void createRecordArray();
+void teamRecordMenu();
 
 void mainMenu() {
     system("cls");
@@ -36,7 +36,7 @@ void mainMenu() {
                 break;
 
             case 2:
-                createRecordArray();
+                teamRecordMenu();
                 break;
 
             case 3:

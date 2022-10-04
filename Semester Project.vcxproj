@@ -145,8 +145,7 @@
     <ClCompile Include="rostermenus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainmenu.cpp" />
-    <ClCompile Include="searchandsort.cpp" />
-    <ClCompile Include="teamMenu.cpp" />
+    <ClCompile Include="teamRecordMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="person.h" />

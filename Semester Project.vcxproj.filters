@@ -24,10 +24,7 @@
     <ClCompile Include="mainmenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="teamMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="searchandsort.cpp">
+    <ClCompile Include="teamRecordMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
