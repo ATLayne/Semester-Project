@@ -51,7 +51,6 @@ void rosterSelection() {
 
 Player* createPlayerArray(string teamName, int& size) {
     system("cls");
-    cout << "In createPlayerArray function" << endl;
     cout << teamName << "\n" << endl;
 
     //declaring integer counter for number of lines in input file
@@ -101,7 +100,6 @@ Player* createPlayerArray(string teamName, int& size) {
         i++;
     }
 
-    cout << "Created Roster Array." << endl;
     system("pause");
     return tempArray;
 }
@@ -175,7 +173,6 @@ Player* printRoster(Player* playerArray, int& size) {
 }
 
 Player* addToRoster(Player* playerArray, int& size) {
-    cout << "Called add to roster function" << endl;
     int addNumber, addAge;
     string addName, addPOS;
     char continueSelect;
@@ -214,6 +211,7 @@ Player* addToRoster(Player* playerArray, int& size) {
 
 Player* removeFromRoster(Player* playerArray, int& size) {
     cout << "A roster will now be printed to allow selection." << endl;
+    system("pause");
     playerArray = printRoster(playerArray, size);
 
     cout << "Please select the number next to the player you would like to delete." << endl;
@@ -248,7 +246,6 @@ Player* removeFromRoster(Player* playerArray, int& size) {
 }
 
 void writeToFile(Player* playerArray, int& size, string teamName) {
-    cout << "Called write to file function." << endl;
     fstream file;
     file.open(teamName, ios::out | ios::trunc);
 
