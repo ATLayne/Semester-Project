@@ -24,7 +24,10 @@
     <ClCompile Include="mainmenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="rosters.cpp">
+    <ClCompile Include="teamMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="searchandsort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,12 +38,18 @@
     <ClInclude Include="person.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="teamrecord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="buccaneers.txt">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="saints.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="records.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

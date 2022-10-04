@@ -17,9 +17,6 @@ private:
     string playerPOS;
 
 public:
-
-
-
     //Default Constructor
     Player();
 

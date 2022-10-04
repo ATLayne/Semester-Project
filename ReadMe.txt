@@ -3,6 +3,32 @@ Nathaniel Moreno
 
 CSCI 41 - NFL Project
 
+Project 2 (Solo) Requirements:
+1.) Choice of Struct - 	Decided to implement a struct that held the win/loss records for each team. A dynamic
+				array of structs is then implemented in the teammenu.cpp file.
+
+2.) Struct Design - 	The struct contains 4 different elements with a total of 2 types.
+				3 ints (win, loss, tie) and 1 string (teamName)
+
+3.) Input/Output Interface - 	A user menu is implemented to allow users to edit a teams record. There is no
+					ability to add or remove a team element as that would be counterproductive to
+					what this code is for. However, a user can manually edit the wins, losses, or 
+					ties of individual team. This changes are then stored to an external file.
+
+4.) Readability -	Removed excessive white space from the program. Defined what the teammenu.cpp file is used 
+			for. 
+
+5.) Handles Erroneous Input -	A series of loops or switch statements prevent erroneous selections within menus.
+
+6.) Effective Processing - 	Not really applicable to the problem that this code is used for. I do suppose that
+					functionality to calculate a teams win percentage could be implemented.
+
+7.) Updates from previous feedback - 	Removed excessive white space in some files. Also fixed bug that 
+							wouldn't allow deletion of elements of the player rosters.
+						
+
+****************************************************************************************************************
+****************************************************************************************************************
 Project 1 Requirements:
 1.) List of members implemented - 	This should be accomplished with the use of entire player rosters
 						of NFL football teams. The members are contained within .txt
