@@ -6,15 +6,15 @@
 #define MAINMENU_CPP
 #include <stdlib.h>
 #include <iostream>
-#include "rostermenus.cpp"
-#include "teamMenu.cpp"
+//#include "rostermenus.cpp"
+//#include "teamMenu.cpp"
 using namespace std;
 
 //Serves as a starting point for users of the program.
 //simple switch statement used to call other functions 
 //included in the program.
-void exploreRosters();
-void printTeamRecords();
+void rosterSelection();
+void createRecordArray();
 
 void mainMenu() {
     system("cls");
@@ -23,7 +23,7 @@ void mainMenu() {
 
         cout << "*****MAIN MENU*****\n\n";
         cout << "What do you want to do?" << endl;
-        cout << "1.) Explore Rosters" << endl;
+        cout << "1.) Open Roster Menu" << endl;
         cout << "2.) Open Team Record Menu" << endl;
         cout << "3.) ---Quit Program---" << endl;
         cin >> selection;
@@ -32,7 +32,7 @@ void mainMenu() {
         switch (selection) {
 
             case 1:
-                exploreRosters();
+                rosterSelection();
                 break;
 
             case 2:

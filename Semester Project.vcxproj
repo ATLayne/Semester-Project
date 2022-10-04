@@ -145,7 +145,7 @@
     <ClCompile Include="rostermenus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainmenu.cpp" />
-    <ClCompile Include="rosters.cpp" />
+    <ClCompile Include="searchandsort.cpp" />
     <ClCompile Include="teamMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
