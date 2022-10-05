@@ -21,6 +21,9 @@ TeamRecord* printTeamRecords(TeamRecord* recordArray, int& size);
 TeamRecord* editTeamRecord(TeamRecord* recordArray, int& size);
 TeamRecord* searchRecords(TeamRecord* recordArray, int& size);
 TeamRecord* sortRecords(TeamRecord* recordArray, int& size);
+TeamRecord* linearSearchWins(TeamRecord* recordArray, int& size, int amount);
+TeamRecord* linearSearchLosses(TeamRecord* recordArray, int& size, int amount);
+TeamRecord* linearSearchTies(TeamRecord* recordArray, int& size, int amount);
 void mainMenu();
 
 void teamRecordMenu(){
@@ -236,13 +239,108 @@ TeamRecord* editTeamRecord(TeamRecord* recordArray, int& size){
 }
 
 TeamRecord* searchRecords(TeamRecord* recordArray, int& size) {
+    int selection, amountToDisplay;
+    cout << "1.) Wins" << endl;
+    cout << "2.) Losses" << endl;
+    cout << "3.) Ties" << endl;
+    cin >> selection;
+
+    switch (selection) {
+        case 1:
+            cout << "Teams with how many wins should be displayed?" << endl;
+            cin >> amountToDisplay;
+            recordArray = linearSearchWins(recordArray, size, amountToDisplay);
+            system("pause");
+            break;
+        case 2:
+            cout << "Teams with how many losses should be displayed?" << endl;
+            cin >> amountToDisplay;
+            recordArray = linearSearchLosses(recordArray, size, amountToDisplay);
+            system("pause");
+            break;
+        case 3:
+            cout << "Teams with how many ties should be displayed?" << endl;
+            cin >> amountToDisplay;
+            recordArray = linearSearchTies(recordArray, size, amountToDisplay);
+            system("pause");
+            break;
+    }
     return recordArray;
 }
 
 TeamRecord* sortRecords(TeamRecord* recordArray, int& size) {
-
+    cout << "Sort by:" << endl;
+    cout << "1.) Wins" << endl;
+    cout << "2.) Losses" << endl;
+    cout << "3.) Ties" << endl;
     return recordArray;
 }
 
+TeamRecord* linearSearchWins(TeamRecord* recordArray, int& size, int amount) {
+    cout << endl;
+    cout << setfill(' ') << setw(10) << " " << "Team"
+         << setfill(' ') << setw(15) << " " << "Wins"
+         << setfill(' ') << setw(7) << " " << "Losses"
+         << setfill(' ') << setw(5) << " " << "Ties"
+         << setfill(' ') << setw(5) << " " << "Percentage" << endl;
+    cout << endl;
+
+    for (int i = 0; i < size; i++) {
+        cout << left;
+        if (recordArray[i].win == amount){
+            cout << setw(30) << recordArray[i].teamName << " "
+                << setw(10) << recordArray[i].win << " "
+                << setw(10) << recordArray[i].loss << " "
+                << setw(10) << recordArray[i].tie << " "
+                << setw(2) << fixed << setprecision(0) << right
+                << recordArray[i].percentage << endl;
+        }
+    }
+    return recordArray;
+}
+
+TeamRecord* linearSearchLosses(TeamRecord* recordArray, int& size, int amount) {
+    cout << endl;
+    cout << setfill(' ') << setw(10) << " " << "Team"
+        << setfill(' ') << setw(15) << " " << "Wins"
+        << setfill(' ') << setw(7) << " " << "Losses"
+        << setfill(' ') << setw(5) << " " << "Ties"
+        << setfill(' ') << setw(5) << " " << "Percentage" << endl;
+    cout << endl;
+
+    for (int i = 0; i < size; i++) {
+        if (recordArray[i].loss == amount) {
+            cout << setw(30) << recordArray[i].teamName << " "
+                << setw(10) << recordArray[i].win << " "
+                << setw(10) << recordArray[i].loss << " "
+                << setw(10) << recordArray[i].tie << " "
+                << setw(10) << fixed << setprecision(0) << right
+                << recordArray[i].percentage << endl;
+        }
+    }
+    return recordArray;
+}
+
+TeamRecord* linearSearchTies(TeamRecord* recordArray, int& size, int amount) {
+    cout << endl;
+    cout << setfill(' ') << setw(10) << " " << "Team"
+        << setfill(' ') << setw(15) << " " << "Wins"
+        << setfill(' ') << setw(7) << " " << "Losses"
+        << setfill(' ') << setw(5) << " " << "Ties"
+        << setfill(' ') << setw(5) << " " << "Percentage" << endl;
+    cout << endl;
+
+    for (int i = 0; i < size; i++) {
+        if (recordArray[i].tie == amount) {
+            cout << setw(30) << recordArray[i].teamName << " "
+                << setw(10) << recordArray[i].win << " "
+                << setw(10) << recordArray[i].loss << " "
+                << setw(10) << recordArray[i].tie << " "
+                << setw(5) << fixed << setprecision(0) << right
+                << recordArray[i].percentage << endl;
+        }
+    }
+    return recordArray;
+}
 
 #endif
