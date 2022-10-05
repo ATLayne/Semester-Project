@@ -13,6 +13,7 @@
 #include <sstream>
 #include <iomanip>
 #include "teamrecord.h"
+#include "linearSearch.h"
 using namespace std;
 
 void teamRecordMenu();
@@ -21,9 +22,9 @@ TeamRecord* printTeamRecords(TeamRecord* recordArray, int& size);
 TeamRecord* editTeamRecord(TeamRecord* recordArray, int& size);
 TeamRecord* searchRecords(TeamRecord* recordArray, int& size);
 TeamRecord* sortRecords(TeamRecord* recordArray, int& size);
-TeamRecord* linearSearchWins(TeamRecord* recordArray, int& size, int amount);
-TeamRecord* linearSearchLosses(TeamRecord* recordArray, int& size, int amount);
-TeamRecord* linearSearchTies(TeamRecord* recordArray, int& size, int amount);
+//TeamRecord* linearSearchWins(TeamRecord* recordArray, int& size, int amount);
+//TeamRecord* linearSearchLosses(TeamRecord* recordArray, int& size, int amount);
+//TeamRecord* linearSearchTies(TeamRecord* recordArray, int& size, int amount);
 void mainMenu();
 
 void teamRecordMenu(){
@@ -31,7 +32,6 @@ void teamRecordMenu(){
     TeamRecord* recordArray = createRecordArray(size);
 
     int selection;
-    cout << "In teamRecordMenu Function" << endl;
     cout << "What would you like to do?" << endl;
     cout << "1.) Print records" << endl;
     cout << "2.) Search Records" << endl;
@@ -63,13 +63,11 @@ void teamRecordMenu(){
             teamRecordMenu();
             break;
     }
-
 }
 
 
 TeamRecord* createRecordArray(int& size) {
     system("cls");
-    cout << "Creating record array." << endl;
 
     //declaring integer counter for number of lines in input file
     size = 0;
@@ -119,7 +117,6 @@ TeamRecord* createRecordArray(int& size) {
         i++;
     }
     file.close();
-
     return recordArray;
 }
 
@@ -251,6 +248,7 @@ TeamRecord* searchRecords(TeamRecord* recordArray, int& size) {
             cin >> amountToDisplay;
             recordArray = linearSearchWins(recordArray, size, amountToDisplay);
             system("pause");
+            teamRecordMenu();
             break;
         case 2:
             cout << "Teams with how many losses should be displayed?" << endl;
@@ -276,71 +274,100 @@ TeamRecord* sortRecords(TeamRecord* recordArray, int& size) {
     return recordArray;
 }
 
-TeamRecord* linearSearchWins(TeamRecord* recordArray, int& size, int amount) {
-    cout << endl;
-    cout << setfill(' ') << setw(10) << " " << "Team"
-         << setfill(' ') << setw(15) << " " << "Wins"
-         << setfill(' ') << setw(7) << " " << "Losses"
-         << setfill(' ') << setw(5) << " " << "Ties"
-         << setfill(' ') << setw(5) << " " << "Percentage" << endl;
-    cout << endl;
-
-    for (int i = 0; i < size; i++) {
-        cout << left;
-        if (recordArray[i].win == amount){
-            cout << setw(30) << recordArray[i].teamName << " "
-                << setw(10) << recordArray[i].win << " "
-                << setw(10) << recordArray[i].loss << " "
-                << setw(10) << recordArray[i].tie << " "
-                << setw(2) << fixed << setprecision(0) << right
-                << recordArray[i].percentage << endl;
-        }
-    }
-    return recordArray;
-}
-
-TeamRecord* linearSearchLosses(TeamRecord* recordArray, int& size, int amount) {
-    cout << endl;
-    cout << setfill(' ') << setw(10) << " " << "Team"
-        << setfill(' ') << setw(15) << " " << "Wins"
-        << setfill(' ') << setw(7) << " " << "Losses"
-        << setfill(' ') << setw(5) << " " << "Ties"
-        << setfill(' ') << setw(5) << " " << "Percentage" << endl;
-    cout << endl;
-
-    for (int i = 0; i < size; i++) {
-        if (recordArray[i].loss == amount) {
-            cout << setw(30) << recordArray[i].teamName << " "
-                << setw(10) << recordArray[i].win << " "
-                << setw(10) << recordArray[i].loss << " "
-                << setw(10) << recordArray[i].tie << " "
-                << setw(10) << fixed << setprecision(0) << right
-                << recordArray[i].percentage << endl;
-        }
-    }
-    return recordArray;
-}
-
-TeamRecord* linearSearchTies(TeamRecord* recordArray, int& size, int amount) {
-    cout << endl;
-    cout << setfill(' ') << setw(10) << " " << "Team"
-        << setfill(' ') << setw(15) << " " << "Wins"
-        << setfill(' ') << setw(7) << " " << "Losses"
-        << setfill(' ') << setw(5) << " " << "Ties"
-        << setfill(' ') << setw(5) << " " << "Percentage" << endl;
-    cout << endl;
-
-    for (int i = 0; i < size; i++) {
-        if (recordArray[i].tie == amount) {
-            cout << setw(30) << recordArray[i].teamName << " "
-                << setw(10) << recordArray[i].win << " "
-                << setw(10) << recordArray[i].loss << " "
-                << setw(10) << recordArray[i].tie << " "
-                << setw(5) << fixed << setprecision(0) << right
-                << recordArray[i].percentage << endl;
-        }
-    }
-    return recordArray;
-}
+//TeamRecord* linearSearchWins(TeamRecord* recordArray, int& size, int amount) {
+//    cout << endl;
+//    cout << setfill(' ') << setw(10) << " " << "Team"
+//         << setfill(' ') << setw(15) << " " << "Wins"
+//         << setfill(' ') << setw(7) << " " << "Losses"
+//         << setfill(' ') << setw(5) << " " << "Ties"
+//         << setfill(' ') << setw(5) << " " << "Percentage" << endl;
+//    cout << endl;
+//
+//    int flag = 0;
+//    auto start = chrono::steady_clock::now();
+//    for (int i = 0; i < size; i++) {
+//        cout << left;
+//        if (recordArray[i].win == amount){
+//            cout << setw(30) << recordArray[i].teamName << " "
+//                << setw(10) << recordArray[i].win << " "
+//                << setw(10) << recordArray[i].loss << " "
+//                << setw(10) << recordArray[i].tie << " "
+//                << setw(2) << fixed << setprecision(0) << right
+//                << recordArray[i].percentage << endl;
+//            flag = 1;
+//        }
+//    }
+//    auto end = chrono::steady_clock::now();
+//    if (flag == 0) {
+//        cout << "No results found." << endl;
+//    }
+//    double elapsedTime = double(::chrono::duration_cast <::chrono::milliseconds> (end - start).count());
+//    cout << "Elapsed Time: " << elapsedTime << " milliseconds." << endl;
+//    return recordArray;
+//}
+//
+//TeamRecord* linearSearchLosses(TeamRecord* recordArray, int& size, int amount) {
+//    cout << endl;
+//    cout << setfill(' ') << setw(10) << " " << "Team"
+//        << setfill(' ') << setw(15) << " " << "Wins"
+//        << setfill(' ') << setw(7) << " " << "Losses"
+//        << setfill(' ') << setw(5) << " " << "Ties"
+//        << setfill(' ') << setw(5) << " " << "Percentage" << endl;
+//    cout << endl;
+//
+//    int flag = 0;
+//    auto start = chrono::steady_clock::now();
+//    for (int i = 0; i < size; i++) {
+//        cout << left;
+//        if (recordArray[i].loss == amount) {
+//            cout << setw(30) << recordArray[i].teamName << " "
+//                << setw(10) << recordArray[i].win << " "
+//                << setw(10) << recordArray[i].loss << " "
+//                << setw(10) << recordArray[i].tie << " "
+//                << setw(2) << fixed << setprecision(0) << right
+//                << recordArray[i].percentage << endl;
+//            flag = 1;
+//        }
+//    }
+//    auto end = chrono::steady_clock::now();
+//    if (flag == 0) {
+//        cout << "No results found." << endl;
+//    }
+//    double elapsedTime = double(::chrono::duration_cast <::chrono::milliseconds> (end - start).count());
+//    cout << "Elapsed Time: " << elapsedTime << " milliseconds." << endl;
+//    return recordArray;
+//}
+//
+//TeamRecord* linearSearchTies(TeamRecord* recordArray, int& size, int amount) {
+//    cout << endl;
+//    cout << setfill(' ') << setw(10) << " " << "Team"
+//        << setfill(' ') << setw(15) << " " << "Wins"
+//        << setfill(' ') << setw(7) << " " << "Losses"
+//        << setfill(' ') << setw(5) << " " << "Ties"
+//        << setfill(' ') << setw(5) << " " << "Percentage" << endl;
+//    cout << endl;
+//
+//    int flag = 0;
+//    auto start = chrono::steady_clock::now();
+//    for (int i = 0; i < size; i++) {
+//        cout << left;
+//        if (recordArray[i].tie == amount) {
+//            cout << setw(30) << recordArray[i].teamName << " "
+//                << setw(10) << recordArray[i].win << " "
+//                << setw(10) << recordArray[i].loss << " "
+//                << setw(10) << recordArray[i].tie << " "
+//                << setw(2) << fixed << setprecision(0) << right
+//                << recordArray[i].percentage << endl;
+//            flag = 1;
+//        }
+//    }
+//    auto end = chrono::steady_clock::now();
+//    if (flag == 0) {
+//        cout << "No results found." << endl;
+//    }
+//    double elapsedTime = double(::chrono::duration_cast <::chrono::milliseconds> (end - start).count());
+//    cout << "Elapsed Time: " << elapsedTime << " milliseconds." << endl;
+//    return recordArray;
+//}
 
 #endif

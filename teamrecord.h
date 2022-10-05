@@ -11,8 +11,8 @@ using namespace std;
 struct TeamRecord
 {
     string teamName;
-    double win, loss, tie;
-    double percentage;
+    double win = 0, loss = 0, tie = 0;
+    double percentage = 0;
 };
 
 
