@@ -22,9 +22,8 @@ TeamRecord* printTeamRecords(TeamRecord* recordArray, int& size);
 TeamRecord* editTeamRecord(TeamRecord* recordArray, int& size);
 TeamRecord* searchRecords(TeamRecord* recordArray, int& size);
 TeamRecord* sortRecords(TeamRecord* recordArray, int& size);
-//TeamRecord* linearSearchWins(TeamRecord* recordArray, int& size, int amount);
-//TeamRecord* linearSearchLosses(TeamRecord* recordArray, int& size, int amount);
-//TeamRecord* linearSearchTies(TeamRecord* recordArray, int& size, int amount);
+TeamRecord* selectionSortAscending(TeamRecord* recordArray, int& size);
+TeamRecord* selectionSortDescending(TeamRecord* recordArray, int& size);
 void mainMenu();
 
 void teamRecordMenu(){
@@ -60,9 +59,11 @@ void teamRecordMenu(){
         
         default:
             cout << "Invalid Choice. Please select again." << endl;
+            system("pause");
             teamRecordMenu();
             break;
     }
+    teamRecordMenu();
 }
 
 
@@ -161,8 +162,6 @@ TeamRecord* printTeamRecords(TeamRecord* recordArray, int& size) {
 
     if (recordEditSelection == 'Y' or recordEditSelection == 'y')
         editTeamRecord(recordArray, size);
-    else
-        teamRecordMenu();
 
     system("pause");
     return recordArray;
@@ -186,21 +185,24 @@ TeamRecord* editTeamRecord(TeamRecord* recordArray, int& size){
     int statEdit = 0;
     switch(statSelect){
         case 1:
-            cout << "How many wins do the " + recordArray[teamSelect].teamName + " have?" << endl;
+            cout << "How many wins do the " + recordArray[teamSelect].teamName + 
+                    " have?" << endl;
             cin >> statEdit;
             recordArray[teamSelect].win = statEdit;
             cout << endl;
             break;
 
         case 2:
-            cout << "How many losses do the " + recordArray[teamSelect].teamName + " have?" << endl;
+            cout << "How many losses do the " + recordArray[teamSelect].teamName + 
+                    " have?" << endl;
             cin >> statEdit;
             recordArray[teamSelect].loss = statEdit;
             cout << endl;
             break;
 
         case 3:
-            cout << "How many ties do the " + recordArray[teamSelect].teamName + " have?" << endl;
+            cout << "How many ties do the " + recordArray[teamSelect].teamName + 
+                    " have?" << endl;
             cin >> statEdit;
             recordArray[teamSelect].tie = statEdit;
             cout << endl;
@@ -237,6 +239,7 @@ TeamRecord* editTeamRecord(TeamRecord* recordArray, int& size){
 
 TeamRecord* searchRecords(TeamRecord* recordArray, int& size) {
     int selection, amountToDisplay;
+    cout << "Search For: " << endl;
     cout << "1.) Wins" << endl;
     cout << "2.) Losses" << endl;
     cout << "3.) Ties" << endl;
@@ -271,103 +274,80 @@ TeamRecord* sortRecords(TeamRecord* recordArray, int& size) {
     cout << "1.) Wins" << endl;
     cout << "2.) Losses" << endl;
     cout << "3.) Ties" << endl;
+    int selection;
+    cin >> selection;
+
+    switch (selection)
+    {
+        int selection2;
+        case 1:
+            cout << "What Order?" << endl;
+            cout << "1.) Ascending" << endl;
+            cout << "2.) Descending" << endl;
+            cin >> selection2;
+            if (selection2 == 1) {
+                recordArray = selectionSortAscending(recordArray, size);
+            }
+            else if (selection2 == 2) {
+                recordArray = selectionSortDescending(recordArray, size);
+            }
+            break;
+
+        case 2:
+
+        default:
+            break;
+    }
     return recordArray;
 }
 
-//TeamRecord* linearSearchWins(TeamRecord* recordArray, int& size, int amount) {
-//    cout << endl;
-//    cout << setfill(' ') << setw(10) << " " << "Team"
-//         << setfill(' ') << setw(15) << " " << "Wins"
-//         << setfill(' ') << setw(7) << " " << "Losses"
-//         << setfill(' ') << setw(5) << " " << "Ties"
-//         << setfill(' ') << setw(5) << " " << "Percentage" << endl;
-//    cout << endl;
-//
-//    int flag = 0;
-//    auto start = chrono::steady_clock::now();
-//    for (int i = 0; i < size; i++) {
-//        cout << left;
-//        if (recordArray[i].win == amount){
-//            cout << setw(30) << recordArray[i].teamName << " "
-//                << setw(10) << recordArray[i].win << " "
-//                << setw(10) << recordArray[i].loss << " "
-//                << setw(10) << recordArray[i].tie << " "
-//                << setw(2) << fixed << setprecision(0) << right
-//                << recordArray[i].percentage << endl;
-//            flag = 1;
-//        }
-//    }
-//    auto end = chrono::steady_clock::now();
-//    if (flag == 0) {
-//        cout << "No results found." << endl;
-//    }
-//    double elapsedTime = double(::chrono::duration_cast <::chrono::milliseconds> (end - start).count());
-//    cout << "Elapsed Time: " << elapsedTime << " milliseconds." << endl;
-//    return recordArray;
-//}
-//
-//TeamRecord* linearSearchLosses(TeamRecord* recordArray, int& size, int amount) {
-//    cout << endl;
-//    cout << setfill(' ') << setw(10) << " " << "Team"
-//        << setfill(' ') << setw(15) << " " << "Wins"
-//        << setfill(' ') << setw(7) << " " << "Losses"
-//        << setfill(' ') << setw(5) << " " << "Ties"
-//        << setfill(' ') << setw(5) << " " << "Percentage" << endl;
-//    cout << endl;
-//
-//    int flag = 0;
-//    auto start = chrono::steady_clock::now();
-//    for (int i = 0; i < size; i++) {
-//        cout << left;
-//        if (recordArray[i].loss == amount) {
-//            cout << setw(30) << recordArray[i].teamName << " "
-//                << setw(10) << recordArray[i].win << " "
-//                << setw(10) << recordArray[i].loss << " "
-//                << setw(10) << recordArray[i].tie << " "
-//                << setw(2) << fixed << setprecision(0) << right
-//                << recordArray[i].percentage << endl;
-//            flag = 1;
-//        }
-//    }
-//    auto end = chrono::steady_clock::now();
-//    if (flag == 0) {
-//        cout << "No results found." << endl;
-//    }
-//    double elapsedTime = double(::chrono::duration_cast <::chrono::milliseconds> (end - start).count());
-//    cout << "Elapsed Time: " << elapsedTime << " milliseconds." << endl;
-//    return recordArray;
-//}
-//
-//TeamRecord* linearSearchTies(TeamRecord* recordArray, int& size, int amount) {
-//    cout << endl;
-//    cout << setfill(' ') << setw(10) << " " << "Team"
-//        << setfill(' ') << setw(15) << " " << "Wins"
-//        << setfill(' ') << setw(7) << " " << "Losses"
-//        << setfill(' ') << setw(5) << " " << "Ties"
-//        << setfill(' ') << setw(5) << " " << "Percentage" << endl;
-//    cout << endl;
-//
-//    int flag = 0;
-//    auto start = chrono::steady_clock::now();
-//    for (int i = 0; i < size; i++) {
-//        cout << left;
-//        if (recordArray[i].tie == amount) {
-//            cout << setw(30) << recordArray[i].teamName << " "
-//                << setw(10) << recordArray[i].win << " "
-//                << setw(10) << recordArray[i].loss << " "
-//                << setw(10) << recordArray[i].tie << " "
-//                << setw(2) << fixed << setprecision(0) << right
-//                << recordArray[i].percentage << endl;
-//            flag = 1;
-//        }
-//    }
-//    auto end = chrono::steady_clock::now();
-//    if (flag == 0) {
-//        cout << "No results found." << endl;
-//    }
-//    double elapsedTime = double(::chrono::duration_cast <::chrono::milliseconds> (end - start).count());
-//    cout << "Elapsed Time: " << elapsedTime << " milliseconds." << endl;
-//    return recordArray;
-//}
+TeamRecord* selectionSortAscending(TeamRecord* recordArray, int& size) {
+    int i, j, indexSmallest;
+    for (i = 0; i < size - 1; ++i) {
 
+        // Find index of smallest remaining element
+        indexSmallest = i;
+            for (j = i + 1; j < size; ++j) {
+
+                if (recordArray[j].win < recordArray[indexSmallest].win) {
+                    indexSmallest = j;
+                }
+            }
+
+        // Swap numbers[i] and numbers[indexSmallest]
+        TeamRecord temp;
+        temp = recordArray[i];
+        recordArray[i] = recordArray[indexSmallest];
+        recordArray[indexSmallest] = temp;
+    }
+    recordArray = printTeamRecords(recordArray, size);
+    cout << "Leaving selectionSort" << endl;
+    system("pause");
+    return recordArray;
+}
+
+TeamRecord* selectionSortDescending(TeamRecord* recordArray, int& size) {
+    int i, j, indexSmallest;
+    for (i = 0; i < size - 1; ++i) {
+
+        // Find index of smallest remaining element
+        indexSmallest = i;
+        for (j = i + 1; j < size; ++j) {
+
+            if (recordArray[j].win > recordArray[indexSmallest].win) {
+                indexSmallest = j;
+            }
+        }
+
+        // Swap numbers[i] and numbers[indexSmallest]
+        TeamRecord temp;
+        temp = recordArray[i];
+        recordArray[i] = recordArray[indexSmallest];
+        recordArray[indexSmallest] = temp;
+    }
+    recordArray = printTeamRecords(recordArray, size);
+    cout << "Leaving selectionSort" << endl;
+    system("pause");
+    return recordArray;
+}
 #endif
