@@ -12,6 +12,7 @@
 #include <string>
 #include <sstream>
 #include <iomanip>
+#include <chrono>
 #include "teamrecord.h"
 #include "linearSearch.h"
 using namespace std;
@@ -22,8 +23,12 @@ TeamRecord* printTeamRecords(TeamRecord* recordArray, int& size);
 TeamRecord* editTeamRecord(TeamRecord* recordArray, int& size);
 TeamRecord* searchRecords(TeamRecord* recordArray, int& size);
 TeamRecord* sortRecords(TeamRecord* recordArray, int& size);
-TeamRecord* selectionSortAscending(TeamRecord* recordArray, int& size);
-TeamRecord* selectionSortDescending(TeamRecord* recordArray, int& size);
+TeamRecord* selectionSortAscendingWins(TeamRecord* recordArray, int& size);
+TeamRecord* selectionSortDescendingWins(TeamRecord* recordArray, int& size);
+TeamRecord* selectionSortAscendingLosses(TeamRecord* recordArray, int& size);
+TeamRecord* selectionSortDescendingLosses(TeamRecord* recordArray, int& size);
+TeamRecord* selectionSortAscendingTies(TeamRecord* recordArray, int& size);
+TeamRecord* selectionSortDescendingTies(TeamRecord* recordArray, int& size);
 void mainMenu();
 
 void teamRecordMenu(){
@@ -286,23 +291,39 @@ TeamRecord* sortRecords(TeamRecord* recordArray, int& size) {
             cout << "2.) Descending" << endl;
             cin >> selection2;
             if (selection2 == 1) {
-                recordArray = selectionSortAscending(recordArray, size);
+                recordArray = selectionSortAscendingWins(recordArray, size);
             }
             else if (selection2 == 2) {
-                recordArray = selectionSortDescending(recordArray, size);
+                recordArray = selectionSortDescendingWins(recordArray, size);
             }
             break;
 
         case 2:
-
+            cout << "What Order?" << endl;
+            cout << "1.) Ascending" << endl;
+            cout << "2.) Descending" << endl;
+            cin >> selection2;
+            if (selection2 == 1) {
+                recordArray = selectionSortAscendingLosses(recordArray, size);
+            }
+            else if (selection2 == 2) {
+                recordArray = selectionSortDescendingLosses(recordArray, size);
+            }
+            break;
         default:
             break;
     }
     return recordArray;
 }
 
-TeamRecord* selectionSortAscending(TeamRecord* recordArray, int& size) {
+
+
+/******************************************************************************/
+/************************SORTING ALGORITHMS FOR WINS***************************/
+/******************************************************************************/
+TeamRecord* selectionSortAscendingWins(TeamRecord* recordArray, int& size) {
     int i, j, indexSmallest;
+    auto start = chrono::steady_clock::now();
     for (i = 0; i < size - 1; ++i) {
 
         // Find index of smallest remaining element
@@ -320,14 +341,17 @@ TeamRecord* selectionSortAscending(TeamRecord* recordArray, int& size) {
         recordArray[i] = recordArray[indexSmallest];
         recordArray[indexSmallest] = temp;
     }
+    auto end = chrono::steady_clock::now();
+    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> (end - start).count());
     recordArray = printTeamRecords(recordArray, size);
-    cout << "Leaving selectionSort" << endl;
+    cout << "Elapsed Time: " << elapsedTime << " microseconds." << endl;
     system("pause");
     return recordArray;
 }
 
-TeamRecord* selectionSortDescending(TeamRecord* recordArray, int& size) {
+TeamRecord* selectionSortDescendingWins(TeamRecord* recordArray, int& size) {
     int i, j, indexSmallest;
+    auto start = chrono::steady_clock::now();
     for (i = 0; i < size - 1; ++i) {
 
         // Find index of smallest remaining element
@@ -345,8 +369,130 @@ TeamRecord* selectionSortDescending(TeamRecord* recordArray, int& size) {
         recordArray[i] = recordArray[indexSmallest];
         recordArray[indexSmallest] = temp;
     }
+    auto end = chrono::steady_clock::now();
+    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> (end - start).count());
     recordArray = printTeamRecords(recordArray, size);
-    cout << "Leaving selectionSort" << endl;
+    cout << "Elapsed Time: " << elapsedTime << " microseconds." << endl;
+    system("pause");
+    return recordArray;
+}
+
+/******************************************************************************/
+/************************SORTING ALGORITHMS FOR LOSSES*************************/
+/******************************************************************************/
+
+TeamRecord* selectionSortAscendingLosses(TeamRecord* recordArray, int& size) {
+    int i, j, indexSmallest;
+    auto start = chrono::steady_clock::now();
+    for (i = 0; i < size - 1; ++i) {
+
+        // Find index of smallest remaining element
+        indexSmallest = i;
+        for (j = i + 1; j < size; ++j) {
+
+            if (recordArray[j].loss < recordArray[indexSmallest].loss) {
+                indexSmallest = j;
+            }
+        }
+
+        // Swap numbers[i] and numbers[indexSmallest]
+        TeamRecord temp;
+        temp = recordArray[i];
+        recordArray[i] = recordArray[indexSmallest];
+        recordArray[indexSmallest] = temp;
+    }
+    auto end = chrono::steady_clock::now();
+    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> (end - start).count());
+    recordArray = printTeamRecords(recordArray, size);
+    cout << "Elapsed Time: " << elapsedTime << " microseconds." << endl;
+    system("pause");
+    return recordArray;
+}
+
+TeamRecord* selectionSortDescendingLosses(TeamRecord* recordArray, int& size) {
+    int i, j, indexSmallest;
+    auto start = chrono::steady_clock::now();
+    for (i = 0; i < size - 1; ++i) {
+
+        // Find index of smallest remaining element
+        indexSmallest = i;
+        for (j = i + 1; j < size; ++j) {
+
+            if (recordArray[j].loss > recordArray[indexSmallest].loss) {
+                indexSmallest = j;
+            }
+        }
+
+        // Swap numbers[i] and numbers[indexSmallest]
+        TeamRecord temp;
+        temp = recordArray[i];
+        recordArray[i] = recordArray[indexSmallest];
+        recordArray[indexSmallest] = temp;
+    }
+    auto end = chrono::steady_clock::now();
+    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> (end - start).count());
+    recordArray = printTeamRecords(recordArray, size);
+    cout << "Elapsed Time: " << elapsedTime << " microseconds." << endl;
+    system("pause");
+    return recordArray;
+}
+
+/******************************************************************************/
+/************************SORTING ALGORITHMS FOR TIES*************************/
+/******************************************************************************/
+
+TeamRecord* selectionSortAscendingTies(TeamRecord* recordArray, int& size) {
+    int i, j, indexSmallest;
+    auto start = chrono::steady_clock::now();
+    for (i = 0; i < size - 1; ++i) {
+
+        // Find index of smallest remaining element
+        indexSmallest = i;
+        for (j = i + 1; j < size; ++j) {
+
+            if (recordArray[j].tie < recordArray[indexSmallest].tie) {
+                indexSmallest = j;
+            }
+        }
+
+        // Swap numbers[i] and numbers[indexSmallest]
+        TeamRecord temp;
+        temp = recordArray[i];
+        recordArray[i] = recordArray[indexSmallest];
+        recordArray[indexSmallest] = temp;
+    }
+    auto end = chrono::steady_clock::now();
+    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> (end - start).count());
+    recordArray = printTeamRecords(recordArray, size);
+    cout << "Elapsed Time: " << elapsedTime << " microseconds." << endl;
+    system("pause");
+    return recordArray;
+}
+
+TeamRecord* selectionSortDescendingTies(TeamRecord* recordArray, int& size) {
+    int i, j, indexSmallest;
+    auto start = chrono::steady_clock::now();
+    for (i = 0; i < size - 1; ++i) {
+
+        // Find index of smallest remaining element
+        indexSmallest = i;
+        for (j = i + 1; j < size; ++j) {
+
+            if (recordArray[j].tie > recordArray[indexSmallest].tie) {
+                indexSmallest = j;
+            }
+        }
+
+        // Swap numbers[i] and numbers[indexSmallest]
+        TeamRecord temp;
+        temp = recordArray[i];
+        recordArray[i] = recordArray[indexSmallest];
+        recordArray[indexSmallest] = temp;
+    }
+    auto end = chrono::steady_clock::now();
+    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> (end - start).count());
+    recordArray = printTeamRecords(recordArray, size);
+    cout << "Elapsed Time: " << elapsedTime << " microseconds." << endl;
     system("pause");
     return recordArray;
 }
