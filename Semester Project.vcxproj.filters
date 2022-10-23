@@ -24,10 +24,10 @@
     <ClCompile Include="mainmenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="teamMenu.cpp">
+    <ClCompile Include="teamRecordMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="searchandsort.cpp">
+    <ClCompile Include="linearSearch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -39,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="teamrecord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="linearSearch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

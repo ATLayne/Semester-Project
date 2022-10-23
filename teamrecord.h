@@ -1,4 +1,7 @@
 // File that creates a struct for TeamRecord.
+//Austin Layne
+//Nathaniel Moreno
+
 // TeamRecord holds win/loss/tie data on each
 // team.
 
@@ -11,7 +14,8 @@ using namespace std;
 struct TeamRecord
 {
     string teamName;
-    int win, loss, tie;
+    double win = 0, loss = 0, tie = 0;
+    double percentage = 0;
 };
 
 

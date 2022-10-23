@@ -142,13 +142,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="linearSearch.cpp" />
     <ClCompile Include="rostermenus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainmenu.cpp" />
-    <ClCompile Include="searchandsort.cpp" />
-    <ClCompile Include="teamMenu.cpp" />
+    <ClCompile Include="teamRecordMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="linearSearch.h" />
     <ClInclude Include="person.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="teamrecord.h" />
