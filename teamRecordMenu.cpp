@@ -1,3 +1,6 @@
+//Austin Layne
+//Nathaniel Moreno
+
 #ifndef TEAMRECORDMENU_CPP
 #define TEAMRECORDMENU_CPP
 
@@ -23,6 +26,10 @@ TeamRecord* printTeamRecords(TeamRecord* recordArray, int& size);
 TeamRecord* editTeamRecord(TeamRecord* recordArray, int& size);
 TeamRecord* searchRecords(TeamRecord* recordArray, int& size);
 TeamRecord* sortRecords(TeamRecord* recordArray, int& size);
+
+//These are the prototypes for the sorting algorithms used in this program.
+//I was unable to resolve various linker errors that were generated when I 
+//tried to moved these into their own header and implementation files.
 TeamRecord* selectionSortAscendingWins(TeamRecord* recordArray, int& size);
 TeamRecord* selectionSortDescendingWins(TeamRecord* recordArray, int& size);
 TeamRecord* selectionSortAscendingLosses(TeamRecord* recordArray, int& size);
@@ -31,6 +38,8 @@ TeamRecord* selectionSortAscendingTies(TeamRecord* recordArray, int& size);
 TeamRecord* selectionSortDescendingTies(TeamRecord* recordArray, int& size);
 void mainMenu();
 
+//This function allows for the selection of menu options related to team 
+//records of the league.
 void teamRecordMenu(){
     int size;
     TeamRecord* recordArray = createRecordArray(size);
@@ -188,27 +197,45 @@ TeamRecord* editTeamRecord(TeamRecord* recordArray, int& size){
     cin >> statSelect;
     
     int statEdit = 0;
-    switch(statSelect){
+    switch (statSelect) {
         case 1:
-            cout << "How many wins do the " + recordArray[teamSelect].teamName + 
-                    " have?" << endl;
+            cout << "How many wins do the " + recordArray[teamSelect].teamName +
+                " have?" << endl;
             cin >> statEdit;
+            while (cin.fail()) {
+                cout << "Please enter an valid number." << endl;
+                cin.clear();
+                cin.ignore(256, '\n');
+                cin >> statEdit;
+            }
             recordArray[teamSelect].win = statEdit;
             cout << endl;
             break;
 
         case 2:
-            cout << "How many losses do the " + recordArray[teamSelect].teamName + 
-                    " have?" << endl;
+            cout << "How many losses do the " + recordArray[teamSelect].teamName +
+                " have?" << endl;
             cin >> statEdit;
+            while (cin.fail()) {
+                cout << "Please enter an valid number." << endl;
+                cin.clear();
+                cin.ignore(256, '\n');
+                cin >> statEdit;
+            }
             recordArray[teamSelect].loss = statEdit;
             cout << endl;
             break;
 
         case 3:
-            cout << "How many ties do the " + recordArray[teamSelect].teamName + 
-                    " have?" << endl;
+            cout << "How many ties do the " + recordArray[teamSelect].teamName +
+                " have?" << endl;
             cin >> statEdit;
+            while (cin.fail()) {
+                cout << "Please enter an valid number." << endl;
+                cin.clear();
+                cin.ignore(256, '\n');
+                cin >> statEdit;
+            }
             recordArray[teamSelect].tie = statEdit;
             cout << endl;
             break;
@@ -242,6 +269,8 @@ TeamRecord* editTeamRecord(TeamRecord* recordArray, int& size){
     return recordArray;
 }
 
+//This function acts as sort of a menu to let the user decide how what
+//stat they want to search for.
 TeamRecord* searchRecords(TeamRecord* recordArray, int& size) {
     int selection, amountToDisplay;
     cout << "Search For: " << endl;
@@ -274,6 +303,8 @@ TeamRecord* searchRecords(TeamRecord* recordArray, int& size) {
     return recordArray;
 }
 
+//This function acts as sort of a menu to let the user decide how to 
+//sort the records of the various teams.
 TeamRecord* sortRecords(TeamRecord* recordArray, int& size) {
     cout << "Sort by:" << endl;
     cout << "1.) Wins" << endl;
@@ -323,7 +354,7 @@ TeamRecord* sortRecords(TeamRecord* recordArray, int& size) {
 /******************************************************************************/
 TeamRecord* selectionSortAscendingWins(TeamRecord* recordArray, int& size) {
     int i, j, indexSmallest;
-    auto start = chrono::steady_clock::now();
+    auto start = chrono::steady_clock::now();   //begin the timer
     for (i = 0; i < size - 1; ++i) {
 
         // Find index of smallest remaining element
@@ -341,8 +372,9 @@ TeamRecord* selectionSortAscendingWins(TeamRecord* recordArray, int& size) {
         recordArray[i] = recordArray[indexSmallest];
         recordArray[indexSmallest] = temp;
     }
-    auto end = chrono::steady_clock::now();
-    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> (end - start).count());
+    auto end = chrono::steady_clock::now();     //end timer after sorting loop completes
+    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> 
+                         (end - start).count());
     recordArray = printTeamRecords(recordArray, size);
     cout << "Elapsed Time: " << elapsedTime << " microseconds." << endl;
     system("pause");
@@ -370,7 +402,8 @@ TeamRecord* selectionSortDescendingWins(TeamRecord* recordArray, int& size) {
         recordArray[indexSmallest] = temp;
     }
     auto end = chrono::steady_clock::now();
-    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> (end - start).count());
+    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> 
+                         (end - start).count());
     recordArray = printTeamRecords(recordArray, size);
     cout << "Elapsed Time: " << elapsedTime << " microseconds." << endl;
     system("pause");
@@ -402,7 +435,8 @@ TeamRecord* selectionSortAscendingLosses(TeamRecord* recordArray, int& size) {
         recordArray[indexSmallest] = temp;
     }
     auto end = chrono::steady_clock::now();
-    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> (end - start).count());
+    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> 
+                         (end - start).count());
     recordArray = printTeamRecords(recordArray, size);
     cout << "Elapsed Time: " << elapsedTime << " microseconds." << endl;
     system("pause");
@@ -430,7 +464,8 @@ TeamRecord* selectionSortDescendingLosses(TeamRecord* recordArray, int& size) {
         recordArray[indexSmallest] = temp;
     }
     auto end = chrono::steady_clock::now();
-    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> (end - start).count());
+    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> 
+                         (end - start).count());
     recordArray = printTeamRecords(recordArray, size);
     cout << "Elapsed Time: " << elapsedTime << " microseconds." << endl;
     system("pause");
@@ -462,7 +497,8 @@ TeamRecord* selectionSortAscendingTies(TeamRecord* recordArray, int& size) {
         recordArray[indexSmallest] = temp;
     }
     auto end = chrono::steady_clock::now();
-    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> (end - start).count());
+    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> 
+                         (end - start).count());
     recordArray = printTeamRecords(recordArray, size);
     cout << "Elapsed Time: " << elapsedTime << " microseconds." << endl;
     system("pause");
@@ -490,7 +526,8 @@ TeamRecord* selectionSortDescendingTies(TeamRecord* recordArray, int& size) {
         recordArray[indexSmallest] = temp;
     }
     auto end = chrono::steady_clock::now();
-    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> (end - start).count());
+    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> 
+                         (end - start).count());
     recordArray = printTeamRecords(recordArray, size);
     cout << "Elapsed Time: " << elapsedTime << " microseconds." << endl;
     system("pause");

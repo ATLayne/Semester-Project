@@ -1,3 +1,6 @@
+//Austin Layne
+//Nathaniel Moreno
+
 #include "linearSearch.h"
 
 TeamRecord* linearSearchWins(TeamRecord* recordArray, int& size, int amount) {

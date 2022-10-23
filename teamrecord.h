@@ -1,4 +1,7 @@
 // File that creates a struct for TeamRecord.
+//Austin Layne
+//Nathaniel Moreno
+
 // TeamRecord holds win/loss/tie data on each
 // team.
 

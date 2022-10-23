@@ -3,6 +3,34 @@ Nathaniel Moreno
 
 CSCI 41 - NFL Project
 
+Project 3 Requirements:
+1.) Valid data structure - 	Use of the TeamRecord struct created by Austin. Defined in teamrecord.h
+
+2.) Ability to add remove data- 	Users cannot remove from entire teams from the files, however the
+						editTeamRecord() function defined in teamRecordMenu.cpp allows users
+						to manually set a teams wins, losses, or ties if they choose
+
+3.) Changes saved to files -	Edits by the user are then written out to the appropriate file.
+
+4.) User interface - 	Menus make use of simple switch statements to navigate the program.
+
+5.) Sort data - 	Sorting is accomplished using a simple selection sort algorithm. Functions are
+			defined in teamRecordMenu.cpp Users are presented with the option to sort 
+			ascending or descending after they select which stat to sort.
+
+6.) Search data - 	Searching is accomplished using a basic linear search algorithm. After the user
+				selects a value to search for the function basically just loops through the array
+				and will output each item that matches the chosen search value.
+
+7.) Time complexity - 	Was unable to find information on the specified GetTickCount() function, however 
+				time reporting is accomplished for each function using the chrono header and timing
+				each algorithm and displaying the time in either micro or miliseconds.
+
+8.) Readability - 	Kept line lengths to approx 80 characters. Removed unnecesary white space. Comments 
+				explain various functions and can be used as dividers when searching through code.
+
+****************************************************************************************************************
+****************************************************************************************************************
 Project 2 (Solo) Requirements:
 1.) Choice of Struct - 	Decided to implement a struct that held the win/loss records for each team. A dynamic
 				array of structs is then implemented in the teammenu.cpp file.

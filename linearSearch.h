@@ -1,3 +1,6 @@
+//Austin Layne
+//Nathaniel Moreno
+
 #ifndef LINEARSEARCH_H
 #define LINEARSEARCH_H
 #include "teamrecord.h"
