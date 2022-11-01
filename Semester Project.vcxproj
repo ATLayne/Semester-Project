@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="linearSearch.cpp" />
+    <ClCompile Include="listTest.cpp" />
     <ClCompile Include="rostermenus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainmenu.cpp" />
@@ -150,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="linearSearch.h" />
+    <ClInclude Include="PlayerList.h" />
     <ClInclude Include="person.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="teamrecord.h" />
