@@ -10,8 +10,9 @@ public:
 	~PlayerList();
 
 	void appendNode(int numberInput, string nameInput);
-	void insertNode();
+	void insertNode(int numInput, string nameInput);
 	void deleteNode(int numToDelete);
+	//void sortList();
 	void displayList();
 
 private:
@@ -57,8 +58,37 @@ void PlayerList::appendNode(int numberInput, string nameInput) {
 	}
 }
 
-void PlayerList::insertNode() {
+void PlayerList::insertNode(int numInput, string nameInput) {
+	PlayerListNode* newNode;
+	PlayerListNode* nodePtr;
+	PlayerListNode* previousNode = nullptr;
 
+	newNode = new PlayerListNode;
+	newNode->playerName = nameInput;
+	newNode->playerNumber = numInput;
+
+	if (!head) {
+		head = newNode;
+		newNode->next = nullptr;
+	}
+	else {
+		nodePtr = head;
+		previousNode = nullptr;
+
+		while (nodePtr != nullptr && nodePtr->playerNumber < numInput) {
+			previousNode = nodePtr;
+			nodePtr = nodePtr->next;
+		}
+
+		if (previousNode == nullptr) {
+			head = newNode;
+			newNode->next = nodePtr;
+		}
+		else {
+			previousNode->next = newNode;
+			newNode->next = nodePtr;
+		}
+	}
 }
 
 void PlayerList::deleteNode(int numToDelete){
@@ -87,6 +117,30 @@ void PlayerList::deleteNode(int numToDelete){
 		}
 	}
 }
+
+//void PlayerList::sortList() {
+//	PlayerListNode* nodePtr;
+//	PlayerListNode* tempNode;
+//	//int tempNum;
+//	//string tempName;
+//	nodePtr = head;
+//	tempNode = new PlayerListNode;
+//
+//	bool sorted = false;
+//
+//	while (nodePtr != nullptr && sorted == false) {
+//		if (nodePtr->playerNumber < nodePtr->next->playerNumber) {
+//			tempNode = nodePtr->next;
+//			nodePtr->next = nodePtr;
+//			nodePtr = tempNode;
+//			sorted = false;
+//		}
+//		else {
+//			sorted = true;
+//		}
+//		nodePtr = nodePtr->next;
+//	}
+//}
 
 void PlayerList::displayList() {
 	PlayerListNode* nodePtr;

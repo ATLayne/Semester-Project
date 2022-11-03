@@ -18,6 +18,8 @@ void listTest() {
 	testList.appendNode(3, "Test3");
 	testList.displayList();	
 
+    cout << "Will now enter creatList() function." << endl;
+    system("pause");
     createList();
 }
 
@@ -68,17 +70,13 @@ void createList() {
             age = stoi(playerAge);
         }
 
-        testList2.appendNode(number, playerName);
+        testList2.insertNode(number, playerName);
     }
 
     testList2.displayList();
-
     addToList(testList2);
-
     system("pause");
-
     deleteFromList(testList2);
-
 }
 
 void addToList(PlayerList list) {
@@ -86,7 +84,7 @@ void addToList(PlayerList list) {
     string playerName;
     cout << "What is the player's name?" << endl;
     getline(cin, playerName);
-    list.appendNode(0, playerName);
+    list.insertNode(0, playerName);
     list.displayList();
 }
 
