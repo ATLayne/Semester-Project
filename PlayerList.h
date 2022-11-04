@@ -1,6 +1,7 @@
 #ifndef PLAYERLIST_H
 #define PLAYERLIST_H
 #include <string>
+#include <iomanip>
 using namespace std;
 
 class PlayerList
@@ -9,10 +10,9 @@ public:
 	PlayerList();
 	~PlayerList();
 
-	void appendNode(int numberInput, string nameInput);
-	void insertNode(int numInput, string nameInput);
+	void appendNode(int numInput, string nameInput, int ageInput, string posInput);
+	void insertNode(int numInput, string nameInput, int ageInput, string posInput);
 	void deleteNode(int numToDelete);
-	//void sortList();
 	void displayList();
 
 private:
@@ -20,6 +20,8 @@ private:
 	{
 		int playerNumber;
 		string playerName;
+		int playerAge;
+		string playerPOS;
 		struct PlayerListNode* next;
 	};
 
@@ -36,12 +38,12 @@ PlayerList::~PlayerList()
 {
 }
 
-void PlayerList::appendNode(int numberInput, string nameInput) {
+void PlayerList::appendNode(int numInput, string nameInput, int ageInput, string posInput) {
 	PlayerListNode* newNode;
 	PlayerListNode* nodePtr;
 
 	newNode = new PlayerListNode;
-	newNode->playerNumber = numberInput;
+	newNode->playerNumber = numInput;
 	newNode->playerName = nameInput;
 	newNode->next = nullptr;
 
@@ -58,7 +60,7 @@ void PlayerList::appendNode(int numberInput, string nameInput) {
 	}
 }
 
-void PlayerList::insertNode(int numInput, string nameInput) {
+void PlayerList::insertNode(int numInput, string nameInput, int ageInput, string posInput) {
 	PlayerListNode* newNode;
 	PlayerListNode* nodePtr;
 	PlayerListNode* previousNode = nullptr;
@@ -66,6 +68,9 @@ void PlayerList::insertNode(int numInput, string nameInput) {
 	newNode = new PlayerListNode;
 	newNode->playerName = nameInput;
 	newNode->playerNumber = numInput;
+	newNode->playerAge = ageInput;
+	newNode->playerPOS = posInput;
+
 
 	if (!head) {
 		head = newNode;
@@ -145,9 +150,21 @@ void PlayerList::deleteNode(int numToDelete){
 void PlayerList::displayList() {
 	PlayerListNode* nodePtr;
 	nodePtr = head;
+
+	cout << endl << left;
+	cout << setfill(' ') << setw(0) << "Number"
+		<< setfill(' ') << setw(8) << " " << "Name"
+		<< setfill(' ') << setw(15) << " " << "Age"
+		<< setfill(' ') << setw(5) << " " << "Position" << endl;
+	cout << endl;
+
+
 	while (nodePtr != nullptr) {
-		cout << "Number: " << nodePtr->playerNumber << " "
-			 << "Name: " << nodePtr->playerName << endl;
+		cout << left;
+		cout << setw(7) << nodePtr->playerNumber << " "
+			 << setw(25) << nodePtr->playerName << " "
+			 << setw(10) << nodePtr->playerAge << " "
+			 << setw(10) << nodePtr->playerPOS << endl;
 		nodePtr = nodePtr->next;
 	}
 }

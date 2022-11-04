@@ -11,15 +11,8 @@ void deleteFromList(PlayerList list);
 void listTest() {
 	cout << "Testing in listTest file." << endl;
 
-	PlayerList testList;
-
-	testList.appendNode(1, "Test1");
-	testList.appendNode(2, "Test2");
-	testList.appendNode(3, "Test3");
-	testList.displayList();	
-
     cout << "Will now enter creatList() function." << endl;
-    system("pause");
+    //system("pause");
     createList();
 }
 
@@ -70,7 +63,7 @@ void createList() {
             age = stoi(playerAge);
         }
 
-        testList2.insertNode(number, playerName);
+        testList2.insertNode(number, playerName, age, playerPOS);
     }
 
     testList2.displayList();
@@ -80,11 +73,19 @@ void createList() {
 }
 
 void addToList(PlayerList list) {
+    string playerName, playerPOS;
+    int playerNum, playerAge;
     cout << "In addToList() Function" << endl;
-    string playerName;
     cout << "What is the player's name?" << endl;
     getline(cin, playerName);
-    list.insertNode(0, playerName);
+    cout << "What is the player's number?" << endl;
+    cin >> playerNum;
+    cout << "What is the player's age?" << endl;
+    cin >> playerAge;
+    cout << "What is the player's position?" << endl;
+    cin >> playerPOS;
+
+    list.insertNode(playerNum, playerName, playerAge, playerPOS);
     list.displayList();
 }
 
