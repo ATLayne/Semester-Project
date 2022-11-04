@@ -7,11 +7,11 @@
 //mainMenu() function of the program.
 //#include "mainmenu.cpp"
 
-//void mainMenu();
+void mainMenu();  //Comment out for windows.
 void listTest();
 
 int main(){
-    //mainMenu();
-    listTest();
+    mainMenu();
+    //listTest();
     return 0;
 }

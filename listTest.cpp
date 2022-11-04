@@ -2,43 +2,88 @@
 #include <fstream>
 #include <sstream>
 #include "PlayerList.h"
+#include "main.cpp"         //comment out for windows.
+#include "mainmenu.cpp"     //comment out for windows.
 using namespace std;
 
-void createList();
-void addToList(PlayerList list);
-void deleteFromList(PlayerList list);
+void mainMenu();
+PlayerList* createList(PlayerList* list, string teamName);
+PlayerList* addToList(PlayerList* list, string teamName);
+PlayerList* deleteFromList(PlayerList* list, string teamName);
 
 void listTest() {
 	cout << "Testing in listTest file." << endl;
 
-    cout << "Will now enter creatList() function." << endl;
+        int teamSelect;
+    string teamName;
+
+    cout << "What team would you like to view?" << endl;
+    cout << "1.) Tampa Bay Buccaneers" << endl;
+    cout << "2.) New Orleans Saints" << endl;
+    cin >> teamSelect;
+    cin.ignore();
+
+    switch (teamSelect)
+    {
+    case 1:
+        teamName = "buccaneers.txt";
+        break;
+
+    case 2:
+        teamName = "saints.txt";
+    
+    default:
+        break;
+    }
+
+    //cout << "Will now enter creatList() function." << endl;
     //system("pause");
-    createList();
+    PlayerList* list1 = new PlayerList;
+    list1 = createList(list1, teamName);
+    list1->displayList();
+
+    int menuSelect;
+    cout << "What do you want to do?" << endl;
+    cout << "1.) Add Player" << endl;
+    cout << "2.) Remove Player" << endl;
+    cout << "3.) Return to Main Menu" << endl;
+    cin >> menuSelect;
+    cin.ignore();
+
+    switch(menuSelect){
+        case 1:
+            list1 = addToList(list1, teamName);
+            listTest();
+            break;
+        
+        case 2:
+            list1 = deleteFromList(list1, teamName);
+            listTest();
+            break;
+
+        case 3:
+            mainMenu();
+    }
+    //list1 = addToList(list1);    
+    //list1 = deleteFromList(list1);    
+
+    // system("pause");
 }
 
 
 /*****************************************************************************/
 /*****************************************************************************/
-void createList() {
-    PlayerList testList2;
-
+PlayerList* createList(PlayerList* list, string teamName) {
     //declaring integer counter for number of lines in input file
     int size = 0;
 
-    fstream file("buccaneers.txt");
+    fstream file(teamName);
     string playerNumber, playerName, playerAge, playerPOS, tempData;
     string line;
 
-    //// count the number of players
-    //while (getline(file, line)) {
-    //    size += 1;
-    //}
-
-
     file.close();
-    file.open("buccaneers.txt");
+    file.open(teamName);
 
-    //int i = 0;
     int number, age;
     while (getline(file, line)) {
 
@@ -63,21 +108,19 @@ void createList() {
             age = stoi(playerAge);
         }
 
-        testList2.insertNode(number, playerName, age, playerPOS);
+        list->insertNode(number, playerName, age, playerPOS);
     }
 
-    testList2.displayList();
-    addToList(testList2);
-    system("pause");
-    deleteFromList(testList2);
+    return list;
 }
 
-void addToList(PlayerList list) {
+PlayerList* addToList(PlayerList* list, string teamName) {
     string playerName, playerPOS;
     int playerNum, playerAge;
     cout << "In addToList() Function" << endl;
     cout << "What is the player's name?" << endl;
     getline(cin, playerName);
+    cin.ignore();
     cout << "What is the player's number?" << endl;
     cin >> playerNum;
     cout << "What is the player's age?" << endl;
@@ -85,20 +128,27 @@ void addToList(PlayerList list) {
     cout << "What is the player's position?" << endl;
     cin >> playerPOS;
 
-    list.insertNode(playerNum, playerName, playerAge, playerPOS);
-    list.displayList();
+    list->insertNode(playerNum, playerName, playerAge, playerPOS);
+    list->displayList();
+    list->writeListToFile(teamName);
+
+    return list;
 }
 
-void deleteFromList(PlayerList list) {
+PlayerList* deleteFromList(PlayerList* list, string teamName) {
     int numToDelete;
 
     cout << "Typer the number of the player to delete." << endl;
     cin >> numToDelete;
 
-    list.deleteNode(numToDelete);
+    list->deleteNode(numToDelete);
 
     cout << "New list will now be displayed." << endl;
     system("pause");
-    list.displayList();
+    list->displayList();
+    list->writeListToFile(teamName);
+
+    return list;
 }
+
 

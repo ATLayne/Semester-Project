@@ -14,6 +14,7 @@ public:
 	void insertNode(int numInput, string nameInput, int ageInput, string posInput);
 	void deleteNode(int numToDelete);
 	void displayList();
+	void writeListToFile(string teamName);
 
 private:
 	struct PlayerListNode
@@ -123,30 +124,6 @@ void PlayerList::deleteNode(int numToDelete){
 	}
 }
 
-//void PlayerList::sortList() {
-//	PlayerListNode* nodePtr;
-//	PlayerListNode* tempNode;
-//	//int tempNum;
-//	//string tempName;
-//	nodePtr = head;
-//	tempNode = new PlayerListNode;
-//
-//	bool sorted = false;
-//
-//	while (nodePtr != nullptr && sorted == false) {
-//		if (nodePtr->playerNumber < nodePtr->next->playerNumber) {
-//			tempNode = nodePtr->next;
-//			nodePtr->next = nodePtr;
-//			nodePtr = tempNode;
-//			sorted = false;
-//		}
-//		else {
-//			sorted = true;
-//		}
-//		nodePtr = nodePtr->next;
-//	}
-//}
-
 void PlayerList::displayList() {
 	PlayerListNode* nodePtr;
 	nodePtr = head;
@@ -166,6 +143,23 @@ void PlayerList::displayList() {
 			 << setw(10) << nodePtr->playerAge << " "
 			 << setw(10) << nodePtr->playerPOS << endl;
 		nodePtr = nodePtr->next;
+	}
+}
+
+void PlayerList::writeListToFile(string teamName){
+	PlayerListNode* nodePtr;
+	nodePtr = head;
+
+    fstream file;
+    file.open(teamName, ios::out | ios::trunc);
+	if(file.is_open()){
+		while (nodePtr != nullptr) {
+            file << to_string(nodePtr->playerNumber) + "," +
+                nodePtr->playerName + "," +
+                to_string(nodePtr->playerAge) + "," +
+                nodePtr->playerPOS << endl;
+			nodePtr = nodePtr->next;
+		}
 	}
 }
 
