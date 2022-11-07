@@ -15,6 +15,7 @@ public:
 	void deleteNode(int numToDelete);
 	void displayList();
 	void writeListToFile(string teamName);
+	void searchList(int numbToSearch);
 
 private:
 	struct PlayerListNode
@@ -32,7 +33,6 @@ private:
 PlayerList::PlayerList()
 {
 	head = nullptr;
-	cout << "Constructor Called." << endl;
 }
 
 PlayerList::~PlayerList()
@@ -161,6 +161,25 @@ void PlayerList::writeListToFile(string teamName){
 			nodePtr = nodePtr->next;
 		}
 	}
+}
+
+void PlayerList::searchList(int numToSearch){
+	cout << "In searchList()" << endl;
+	PlayerListNode* nodePtr;
+	nodePtr = head;
+	bool playerFound = false;
+
+	while(nodePtr != nullptr){
+		if(nodePtr->playerNumber == numToSearch){
+			cout << nodePtr->playerNumber << " " << nodePtr->playerName 
+				 << nodePtr->playerAge << " " << nodePtr->playerPOS << endl;
+			playerFound = true;
+		}
+		nodePtr = nodePtr->next;
+	}
+
+	if(playerFound == false)
+		cout << "Player not found." << endl;
 }
 
 #endif // !PLAYERLIST_H
