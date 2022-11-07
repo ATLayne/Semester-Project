@@ -7,8 +7,8 @@
 //mainMenu() function of the program.
 //#include "mainmenu.cpp"
 
-void mainMenu();  //Comment out for windows.
-void listTest();
+void mainMenu();
+//void listTest();
 
 int main(){
     mainMenu();

@@ -171,8 +171,19 @@ void PlayerList::searchList(int numToSearch){
 
 	while(nodePtr != nullptr){
 		if(nodePtr->playerNumber == numToSearch){
-			cout << nodePtr->playerNumber << " " << nodePtr->playerName 
-				 << nodePtr->playerAge << " " << nodePtr->playerPOS << endl;
+			cout << endl << left;
+			cout << setfill(' ') << setw(0) << "Number"
+				<< setfill(' ') << setw(8) << " " << "Name"
+				<< setfill(' ') << setw(15) << " " << "Age"
+				<< setfill(' ') << setw(5) << " " << "Position" << endl;
+			cout << endl;
+
+			cout << left;
+			cout << setw(7) << nodePtr->playerNumber << " "
+				<< setw(25) << nodePtr->playerName << " "
+				<< setw(10) << nodePtr->playerAge << " "
+				<< setw(10) << nodePtr->playerPOS << endl;
+
 			playerFound = true;
 		}
 		nodePtr = nodePtr->next;

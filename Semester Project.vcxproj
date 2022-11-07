@@ -144,7 +144,6 @@
   <ItemGroup>
     <ClCompile Include="linearSearch.cpp" />
     <ClCompile Include="listTest.cpp" />
-    <ClCompile Include="rostermenus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainmenu.cpp" />
     <ClCompile Include="teamRecordMenu.cpp" />

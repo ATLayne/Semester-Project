@@ -6,7 +6,7 @@
 #define MAINMENU_CPP
 #include <stdlib.h>
 #include <iostream>
-#include "listTest.cpp"     //comment out for windows
+//#include "listTest.cpp"     //comment out for windows
 //#include "rostermenus.cpp"
 //#include "teamMenu.cpp"
 using namespace std;
@@ -39,7 +39,7 @@ void mainMenu() {
                 break;
 
             case 2:
-                //teamRecordMenu();
+                teamRecordMenu();
                 break;
 
             case 3:

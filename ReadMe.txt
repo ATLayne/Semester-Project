@@ -21,9 +21,8 @@ Project 4 Requirements:
 
 6.) Linked List Implementation - linkedList is defined in PlayerList.h
 
-7.) Time complexity Reported - 
+7.) Time complexity Reported - Time complexity reported when searching the linked list for a player.
 
-8.) Readability - 
 
 Project 3 Requirements:
 1.) Valid data structure - 	Use of the TeamRecord struct created by Austin. Defined in teamrecord.h

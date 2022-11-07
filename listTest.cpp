@@ -1,9 +1,13 @@
+#ifndef LISTTEST_CPP
+#define LISTTEST_CPP
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <chrono>
 #include "PlayerList.h"
-#include "main.cpp"         //comment out for windows.
-#include "mainmenu.cpp"     //comment out for windows.
+//#include "main.cpp"         //comment out for windows.
+//#include "mainmenu.cpp"     //comment out for windows.
 using namespace std;
 
 void mainMenu();
@@ -182,7 +186,13 @@ void searchList(PlayerList* list){
     int numToSearch;
     cout << "What player number would you like to search for?" << endl;
     cin >> numToSearch;
+
+    auto start = chrono::steady_clock::now();
     list->searchList(numToSearch);
+    auto end = chrono::steady_clock::now();
+    double elapsedTime = double(::chrono::duration_cast <::chrono::microseconds> 
+        (end - start).count());
+    cout << "Elapsed Time: " << elapsedTime << " microseconds." << endl;
 }
 
-
+#endif
