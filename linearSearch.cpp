@@ -98,3 +98,101 @@ TeamRecord* linearSearchTies(TeamRecord* recordArray, int& size, int amount) {
     cout << "Elapsed Time: " << elapsedTime << " milliseconds." << endl;
     return recordArray;
 }
+
+//Linear Search for QB Stats
+
+QBstats* linearSearchPassing(QBstats* StatsArray, int& size, int amount) {
+    cout << endl;
+    cout << setfill(' ') << setw(10) << " " << "QB Name"
+        << setfill(' ') << setw(15) << " " << "Passing"
+        << setfill(' ') << setw(7) << " " << "Touchdowns"
+        << setfill(' ') << setw(5) << " " << "Ints"
+        << setfill(' ') << setw(5) << " " << "Percentage" << endl;
+    cout << endl;
+
+    int flag = 0;
+    auto start = chrono::steady_clock::now();
+    for (int i = 0; i < size; i++) {
+        cout << left;
+        if (StatsArray[i].Passing == amount) {
+            cout << setw(30) << StatsArray[i].QBName << " "
+                << setw(10) << StatsArray[i].Passing << " "
+                << setw(10) << StatsArray[i].Touchdowns << " "
+                << setw(10) << StatsArray[i].Ints << " "
+                << setw(2) << fixed << setprecision(0) << right
+                << StatsArray[i].percentage << endl;
+            flag = 1;
+        }
+    }
+    auto end = chrono::steady_clock::now();
+    if (flag == 0) {
+        cout << "No results found." << endl;
+    }
+    double elapsedTime = double(::chrono::duration_cast <::chrono::milliseconds> (end - start).count());
+    cout << "Elapsed Time: " << elapsedTime << " milliseconds." << endl;
+    return StatsArray;
+}
+
+QBstats* linearSearchTouchdowns(QBstats* StatsArray, int& size, int amount) {
+   cout << endl;
+    cout << setfill(' ') << setw(10) << " " << "QB Name"
+        << setfill(' ') << setw(15) << " " << "Passing"
+        << setfill(' ') << setw(7) << " " << "Touchdowns"
+        << setfill(' ') << setw(5) << " " << "Ints"
+        << setfill(' ') << setw(5) << " " << "Percentage" << endl;
+    cout << endl;
+
+    int flag = 0;
+    auto start = chrono::steady_clock::now();
+    for (int i = 0; i < size; i++) {
+        cout << left;
+        if (StatsArray[i].Touchdowns == amount) {
+            cout << setw(30) << StatsArray[i].QBName << " "
+                << setw(10) << StatsArray[i].Passing << " "
+                << setw(10) << StatsArray[i].Touchdowns << " "
+                << setw(10) << StatsArray[i].Ints << " "
+                << setw(2) << fixed << setprecision(0) << right
+                << StatsArray[i].percentage << endl;
+            flag = 1;
+        }
+    }
+    auto end = chrono::steady_clock::now();
+    if (flag == 0) {
+        cout << "No results found." << endl;
+    }
+    double elapsedTime = double(::chrono::duration_cast <::chrono::milliseconds> (end - start).count());
+    cout << "Elapsed Time: " << elapsedTime << " milliseconds." << endl;
+    return StatsArray;
+}
+
+QBstats* linearSearchInts(QBstats* StatsArray, int& size, int amount) {
+   cout << endl;
+    cout << setfill(' ') << setw(10) << " " << "QB Name"
+        << setfill(' ') << setw(15) << " " << "Passing"
+        << setfill(' ') << setw(7) << " " << "Touchdowns"
+        << setfill(' ') << setw(5) << " " << "Ints"
+        << setfill(' ') << setw(5) << " " << "Percentage" << endl;
+    cout << endl;
+  
+    int flag = 0;
+    auto start = chrono::steady_clock::now();
+    for (int i = 0; i < size; i++) {
+        cout << left;
+        if (StatsArray[i].Ints == amount) {
+            cout << setw(30) << StatsArray[i].QBName << " "
+                << setw(10) << StatsArray[i].Passing << " "
+                << setw(10) << StatsArray[i].Touchdowns << " "
+                << setw(10) << StatsArray[i].Ints << " "
+                << setw(2) << fixed << setprecision(0) << right
+                << StatsArray[i].percentage << endl;
+            flag = 1;
+        }
+    }
+    auto end = chrono::steady_clock::now();
+    if (flag == 0) {
+        cout << "No results found." << endl;
+    }
+    double elapsedTime = double(::chrono::duration_cast <::chrono::milliseconds> (end - start).count());
+    cout << "Elapsed Time: " << elapsedTime << " milliseconds." << endl;
+    return StatsArray;
+}
