@@ -30,6 +30,9 @@
     <ClCompile Include="listTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Downloads\Semester-Project-master\Semester-Project-master\QBstatsMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="player.h">
@@ -47,6 +50,9 @@
     <ClInclude Include="PlayerList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="QBstats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="buccaneers.txt">
@@ -56,6 +62,9 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="records.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\..\..\Downloads\Semester-Project-master\Semester-Project-master\QBstats.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

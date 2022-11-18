@@ -17,6 +17,7 @@ using namespace std;
 void rosterSelection();
 void teamRecordMenu();
 void listTest();
+void QBstatsMenu();
 
 void mainMenu() {
     system("cls");
@@ -27,7 +28,8 @@ void mainMenu() {
         cout << "What do you want to do?" << endl;
         cout << "1.) Open Roster Menu" << endl;
         cout << "2.) Open Team Record Menu" << endl;
-        cout << "3.) ---Quit Program---" << endl;
+        cout << "3.) Open QB Stats Menu" << endl;
+        cout << "4.) ---Quit Program---" << endl;
         cin >> selection;
         cin.ignore();
 
@@ -43,6 +45,10 @@ void mainMenu() {
                 break;
 
             case 3:
+                QBstatsMenu();
+                break;
+
+            case 4:
                 exit(1);
                 break;
 

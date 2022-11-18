@@ -8,10 +8,8 @@
 //#include "mainmenu.cpp"
 
 void mainMenu();
-//void listTest();
 
 int main(){
     mainMenu();
-    //listTest();
     return 0;
 }

@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Downloads\Semester-Project-master\Semester-Project-master\QBstatsMenu.cpp" />
     <ClCompile Include="linearSearch.cpp" />
     <ClCompile Include="listTest.cpp" />
     <ClCompile Include="main.cpp" />
@@ -153,9 +154,11 @@
     <ClInclude Include="PlayerList.h" />
     <ClInclude Include="person.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="QBstats.h" />
     <ClInclude Include="teamrecord.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\..\..\..\Downloads\Semester-Project-master\Semester-Project-master\QBstats.txt" />
     <Text Include="buccaneers.txt" />
     <Text Include="records.txt" />
     <Text Include="saints.txt" />
