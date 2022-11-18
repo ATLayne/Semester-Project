@@ -3,6 +3,27 @@ Nathaniel Moreno
 
 CSCI 41 - NFL Project
 
+Project 4 Requirements:
+1.) Ability to add/remove data - Functions to append/insert/and delete nodes are implemented in
+	linked list. The linked list basically replaces the dynamic arrays from earlier projects to 
+	read rosters from text files. The user can choose to add or remove players.
+
+2.) Handles erroneous data input - Simple do/while loops prevent users from adding players with
+	numbers outside of the ranges of 0-99
+
+3.) Changes saved to file - implemented a writeToFile() function for the linked list in PlayerList.h
+
+4.) User Interface - The linked list functions in the background. The same user interface from previous
+	projects is used.
+
+5.) Search Data Implementation - Users can search the list for a number, and if the number matches a
+	player the program will display that player information.
+
+6.) Linked List Implementation - linkedList is defined in PlayerList.h
+
+7.) Time complexity Reported - Time complexity reported when searching the linked list for a player.
+
+
 Project 3 Requirements:
 1.) Valid data structure - 	Use of the TeamRecord struct created by Austin. Defined in teamrecord.h
 
