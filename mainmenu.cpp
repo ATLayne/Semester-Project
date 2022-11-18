@@ -14,10 +14,10 @@ using namespace std;
 //Serves as a starting point for users of the program.
 //simple switch statement used to call other functions 
 //included in the program.
-void rosterSelection();
 void teamRecordMenu();
 void listTest();
 void QBstatsMenu();
+//void rosterSelection();
 
 void mainMenu() {
     system("cls");

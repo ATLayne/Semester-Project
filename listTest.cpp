@@ -12,9 +12,9 @@ using namespace std;
 
 void mainMenu();
 PlayerList* createList(PlayerList* list, string teamName);
-void selectedRosterMenu(PlayerList* list, string teamName);
 PlayerList* addToList(PlayerList* list, string teamName);
 PlayerList* deleteFromList(PlayerList* list, string teamName);
+void selectedRosterMenu(PlayerList* list, string teamName);
 void searchList(PlayerList* list);
 
 void listTest() {

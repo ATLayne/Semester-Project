@@ -147,6 +147,7 @@
     <ClCompile Include="listTest.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainmenu.cpp" />
+    <ClCompile Include="stack.cpp" />
     <ClCompile Include="teamRecordMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +156,7 @@
     <ClInclude Include="person.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="QBstats.h" />
+    <ClInclude Include="stack.h" />
     <ClInclude Include="teamrecord.h" />
   </ItemGroup>
   <ItemGroup>
