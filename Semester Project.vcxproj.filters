@@ -61,16 +61,64 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="buccaneers.txt">
+    <Text Include="TampaBayBuccaneers.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="saints.txt">
+    <Text Include="NewOrleansSaints.txt">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="records.txt">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="..\..\..\..\Downloads\Semester-Project-master\Semester-Project-master\QBstats.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="teamNames.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="teamFilenames.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="DetroitLions.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="GreenBayPackers.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="HoustonTexans.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="IndianapolisColts.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="ArizonaCardinals.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="AtlantaFalcons.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="BaltimoreRavens.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="BuffaloBills.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="CarolinaPanthers.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="ChicagoBears.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="CincinnatiBengals.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="ClevelandBrowns.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="DallasCowboys.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="DenverBroncos.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

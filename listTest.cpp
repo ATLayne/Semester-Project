@@ -6,6 +6,7 @@
 #include <sstream>
 #include <chrono>
 #include "PlayerList.h"
+#include "stack.h"
 //#include "main.cpp"         //comment out for windows.
 //#include "mainmenu.cpp"     //comment out for windows.
 using namespace std;
@@ -17,32 +18,60 @@ PlayerList* deleteFromList(PlayerList* list, string teamName);
 void selectedRosterMenu(PlayerList* list, string teamName);
 void searchList(PlayerList* list);
 
+Stack teamStack;    //Declaring a global stack to be used throughout the program.
+
 void listTest() {
     int teamSelect;
-    string teamName;
+    string selectedTeamFilename;
+    string teamOutput, nameLine, filenameLine;
+    string teamNameArr[32];
+    string teamFilenameArr[32];
+
+
+    ifstream teamNames("teamNames.txt");
+    int i = 0;
+    while (getline(teamNames, nameLine)) {
+        teamNameArr[i] = nameLine;
+        i++;
+    }
+    teamNames.close();
+
+    ifstream teamFilenames("teamFilenames.txt");
+    int j = 0;
+    while (getline(teamFilenames, filenameLine)) {
+        teamFilenameArr[j] = filenameLine;
+        j++;
+    }
+    teamFilenames.close();
 
     cout << "What team would you like to view?" << endl;
-    cout << "1.) Tampa Bay Buccaneers" << endl;
-    cout << "2.) New Orleans Saints" << endl;
-    cin >> teamSelect;
-    cin.ignore();
-
-    switch (teamSelect)
-    {
-    case 1:
-        teamName = "buccaneers.txt";
-        break;
-
-    case 2:
-        teamName = "saints.txt";
-    
-    default:
-        break;
+    for (int i = 0; i < 32; i++) {
+        cout << i+1 << ".) " << teamNameArr[i] << endl;
     }
+    cout << "--------------------------------------------------" << endl;
+    cout << "33.) Recently Viewed Teams" << endl;
+
+    cin >> teamSelect;
+    if (teamSelect < 1 or teamSelect > 33) {
+        cout << "Invalid Choice" << endl;
+        listTest();
+    }
+    if (teamSelect == 33) {
+        while (!teamStack.isEmpty())
+        {
+            teamStack.pop(teamOutput);
+            cout << teamOutput << endl;
+        }
+    }
+    cin.ignore();
+    teamSelect--;
+
+    selectedTeamFilename = teamFilenameArr[teamSelect];
+    teamStack.push(teamNameArr[teamSelect]);
 
     PlayerList* list1 = new PlayerList;
-    list1 = createList(list1, teamName);
-    selectedRosterMenu(list1, teamName);
+    list1 = createList(list1, selectedTeamFilename);
+    selectedRosterMenu(list1, selectedTeamFilename);
 }
 
 void selectedRosterMenu(PlayerList* list, string teamName){
@@ -52,7 +81,8 @@ void selectedRosterMenu(PlayerList* list, string teamName){
     cout << "2.) Add Player" << endl;
     cout << "3.) Remove Player" << endl;
     cout << "4.) Search Roster" << endl;
-    cout << "5.) Return to Main Menu" << endl;
+    cout << "5.) Select Another Team" << endl;
+    cout << "6.) Return to Main Menu" << endl;
     cin >> menuSelect;
     cin.ignore();
 
@@ -78,6 +108,11 @@ void selectedRosterMenu(PlayerList* list, string teamName){
             break;
 
         case 5:
+            //delete list;
+            listTest();
+
+        case 6:
+            //delete list;
             mainMenu();
     }
 }

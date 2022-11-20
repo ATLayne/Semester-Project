@@ -161,9 +161,25 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\..\..\Downloads\Semester-Project-master\Semester-Project-master\QBstats.txt" />
-    <Text Include="buccaneers.txt" />
+    <Text Include="ArizonaCardinals.txt" />
+    <Text Include="AtlantaFalcons.txt" />
+    <Text Include="BaltimoreRavens.txt" />
+    <Text Include="BuffaloBills.txt" />
+    <Text Include="CarolinaPanthers.txt" />
+    <Text Include="ChicagoBears.txt" />
+    <Text Include="CincinnatiBengals.txt" />
+    <Text Include="ClevelandBrowns.txt" />
+    <Text Include="DallasCowboys.txt" />
+    <Text Include="DenverBroncos.txt" />
+    <Text Include="DetroitLions.txt" />
+    <Text Include="GreenBayPackers.txt" />
+    <Text Include="HoustonTexans.txt" />
+    <Text Include="IndianapolisColts.txt" />
+    <Text Include="TampaBayBuccaneers.txt" />
     <Text Include="records.txt" />
-    <Text Include="saints.txt" />
+    <Text Include="NewOrleansSaints.txt" />
+    <Text Include="teamNames.txt" />
+    <Text Include="teamFilenames.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

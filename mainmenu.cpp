@@ -37,18 +37,22 @@ void mainMenu() {
 
             case 1:
                 //rosterSelection();
+                system("cls");
                 listTest();
                 break;
 
             case 2:
+                system("cls");
                 teamRecordMenu();
                 break;
 
             case 3:
+                system("cls");
                 QBstatsMenu();
                 break;
 
             case 4:
+                system("cls");
                 exit(1);
                 break;
 
