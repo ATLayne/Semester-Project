@@ -121,5 +121,59 @@
     <Text Include="DenverBroncos.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="JacksonvilleJaguars.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="KansasCityChiefs.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="LasVegasRaiders.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="LosAngelesChargers.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="LosAngelesRams.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="MiamiDolphins.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="MinnesotaVikings.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="NewEnglandPatriots.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="NewYorkGiants.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="NewYorkJets.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="PhiladelphiaEagles.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="PittsburghSteelers.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="SanFrancisco49ers.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="SeattleSeahawks.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="TennesseeTitans.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="WashingtonCommanders.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="ReadMe.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="stackContents.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

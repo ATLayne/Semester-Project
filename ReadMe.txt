@@ -2,6 +2,24 @@ Austin Layne
 Nathaniel Moreno
 
 CSCI 41 - NFL Project
+Project 5 (Stack/Queue) Requirements:
+1.) Choice of Stack/Queue: I chose to implement a stack to maintain a list of recently
+	viewed teams. The stack is defined in both stack.h and stack.cpp files.
+
+2.) Changes saved to files: The stack itself does not need to write to any files. However,
+	for the sake of meeting the requirements. The function defined at line 124 of 
+	listTest.cpp will also write the contents of the stack to the file named 
+	stackContents.txt
+
+3.) User interface: The functionality of the stack is hidden behind the scenes. However,
+	after selecting a roster, an option has been added to then see the previously viewed teams.
+	this empties the stack and will start adding until the user viewes them again.
+
+4.) Stack/Queue Implementation: As stated above, I chose to use a stack only for this project.
+	The stack is defined the in the stack.h and stack.cpp files in the solution.
+
+5.) Readability: Kept line lengths to approx 80 characters. Removed unnecesary white space. Comments 
+	explain various functions and can be used as dividers when searching through code.
 
 Project 4 Requirements:
 1.) Ability to add/remove data - Functions to append/insert/and delete nodes are implemented in
