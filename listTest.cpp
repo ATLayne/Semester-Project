@@ -19,15 +19,16 @@ void selectedRosterMenu(PlayerList* list, string teamName);
 void searchList(PlayerList* list);
 
 Stack teamStack;    //Declaring a global stack to be used throughout the program.
-ofstream stackContents;
+ofstream stackContents;     //Declared global ofstream object. Used to write
+                            //the contents of the stack to a file. Line 134.
 
 void listTest() {
     system("cls");
     int teamSelect;
     string selectedTeamFilename;
     string nameLine, filenameLine;
-    string teamNameArr[32];
-    string teamFilenameArr[32];
+    string teamNameArr[32];         //Array of team names in a human readable format
+    string teamFilenameArr[32];     //Array of teamnames in teamname.txt format
 
     /*The following two loops create arrays to hold team names.
     The first array will read team names from a file in a 
@@ -50,9 +51,13 @@ void listTest() {
     }
     teamFilenames.close();
 
+    //Printing the contents of the teamNameArr
+    //Changes to team names are not common, so
+    //the .txt file containing them is not 
+    //edited by the user.
     cout << "What team would you like to view?" << endl;
     for (int i = 0; i < 32; i++) {
-        cout << i+1 << ".) " << teamNameArr[i] << endl;
+        cout << i+1 << ".) " << teamNameArr[i] << endl;     
     }
 
     //The user selects a team using the numbers provided on screen.
